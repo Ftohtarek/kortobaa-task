@@ -19,10 +19,8 @@
 
     <div class="card-body">
         <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
+        <rating [rate]="2"></rating>
 
-        <div class="rating" #rating>
-            <mat-icon *ngFor="let item of [].constructor(5) ;let i=index" (click)="setRating(i)">star</mat-icon>
-        </div>
 
         <div class="price">
             <div [style.text-decoration]="true?'line-through':'none'" class="fixed-price">{{6 |Egy}}</div>

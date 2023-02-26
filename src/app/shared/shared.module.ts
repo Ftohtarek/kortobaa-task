@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './modules/material.module';
 import { CardComponent } from './component/card/card.component';
 import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
+import { RatingComponent } from './component/rating/rating.component';
 
 
 
 @NgModule({
   declarations: [
     CardComponent,
-    EgyCurrencyPipe
+    EgyCurrencyPipe,
+    RatingComponent
     
   ],
   imports: [

@@ -60,19 +60,7 @@
             font-weight: 200;
         }
 
-        .rating {
-            display: inline-block;
-            direction: ltr;
-            margin-right: auto;
-            mat-icon {
-                @include clickBehaviour();
-                color: $startOn;
-                &:last-child {
-
-                    color: $startOff;
-                }
-            }
-        }
+       
 
         .price {
             .discount {
