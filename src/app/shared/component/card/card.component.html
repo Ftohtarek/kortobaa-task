@@ -20,12 +20,8 @@
     <div class="card-body">
         <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
 
-        <div class="rating">
-            <mat-icon>star</mat-icon>
-            <mat-icon>star</mat-icon>
-            <mat-icon>star</mat-icon>
-            <mat-icon>star</mat-icon>
-            <mat-icon>star</mat-icon>
+        <div class="rating" #rating>
+            <mat-icon *ngFor="let item of [].constructor(5) ;let i=index" (click)="setRating(i)">star</mat-icon>
         </div>
 
         <div class="price">
@@ -42,11 +38,13 @@
             </button>
 
             <div product-action>
-
-                <mat-icon share>share</mat-icon>
-
-                <!-- <mat-icon unFavorite>favorite_outline</mat-icon> -->
-                <mat-icon favorite>favorite</mat-icon>
+                <button>
+                    <mat-icon share>share</mat-icon>
+                </button>
+                <button>
+                    <!-- <mat-icon unFavorite>favorite_outline</mat-icon> -->
+                    <mat-icon favorite>favorite</mat-icon>
+                </button>
             </div>
 
         </div>

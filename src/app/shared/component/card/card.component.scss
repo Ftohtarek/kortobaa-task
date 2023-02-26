@@ -61,9 +61,12 @@
         }
 
         .rating {
+            display: inline-block;
+            direction: ltr;
+            margin-right: auto;
             mat-icon {
+                @include clickBehaviour();
                 color: $startOn;
-
                 &:last-child {
 
                     color: $startOff;
@@ -95,6 +98,9 @@
                 color: $groundColor;
                 padding: 4px 10px;
                 font-size: $fontSizeCaption;
+                mat-icon{
+                    margin-left: 10px;
+                }
             }
 
             div[product-action] {
@@ -102,17 +108,20 @@
                 @include verticalCenter();
                 justify-content: space-around;
 
-                mat-icon {
-                    &[share] {
-                        color: $dividerGray;
-                    }
+                button {
+                    @include iconButton();
+                    mat-icon {
+                        &[share] {
+                            color: $dividerGray;
+                        }
 
-                    &[favorite] {
-                        color: tomato;
-                    }
+                        &[favorite] {
+                            color: tomato;
+                        }
 
-                    &[unFavorite] {
-                        color: $startOff;
+                        &[unFavorite] {
+                            color: $startOff;
+                        }
                     }
                 }
             }
