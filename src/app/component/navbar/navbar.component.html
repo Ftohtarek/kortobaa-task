@@ -1,0 +1,61 @@
+<nav>
+    <!-- main nav that contain search input field -->
+    <div id="search-nav">
+        <mat-toolbar class="container">
+            <header>
+                <a mat-button>
+                    <h4>
+                        My App
+                    </h4>
+                </a>
+            </header>
+            <div class="search-container">
+                <button id="searchBtn">
+                    <i class=" search-icon material-icons">search</i>
+                </button>
+                <input name="searchText" placeholder="عم تبحث">
+            </div>
+            <button class="person-icon">
+                <mat-icon>person</mat-icon>
+            </button>
+            <div class="cart">
+                <p>سلة التسوق</p>
+                <mat-icon>shopping_cart</mat-icon>
+            </div>
+
+        </mat-toolbar>
+    </div>
+    
+    <!-- second nav that contain nav item and catergories -->
+    <div id="items-nav">
+        <mat-toolbar class="container">
+            <li class="item-list">
+                <a class="item-link" routerLink="" [matMenuTriggerFor]="menu" mat-button>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                    <span> الاقسام</span>
+
+                </a>
+            </li>
+            <li class="item-list">
+                <a class="item-link" routerLink="" mat-button>الرئيسة</a>
+            </li>
+            <li class="item-list">
+                <a class="item-link" routerLink="" mat-button>قائمة الأمنيات</a>
+            </li>
+            <li class="item-list">
+                <a class="item-link" routerLink="" mat-button>تواصل معنا</a>
+            </li>
+            <li class="item-list">
+                <a class="item-link" routerLink="" mat-button>من نحن</a>
+            </li>
+
+            <mat-menu #menu="matMenu" yPosition="below">
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
+            </mat-menu>
+        </mat-toolbar>
+    </div>
+
+</nav>
