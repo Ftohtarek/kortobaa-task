@@ -1,11 +1,55 @@
 <p>card works!</p>
 <!-- localization -->
 <div class="card">
+
     <div class="card-image">
-        <div style="background-image: url(../../../../assets/pic.png);"></div>
+        <div style="background-image: 'url(../../../../assets/pic.png)'">
+            <div class="card-image-swapper">
+                <button btnIcon="10">
+                    <mat-icon>
+                        swap_horiz
+                    </mat-icon>
+                </button>
+                <button class="newBtn">
+                    جديد
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="body">
+    <div class="card-body">
+        <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
+
+        <div class="rating">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+        </div>
+
+        <div class="price">
+            <div [style.text-decoration]="true?'line-through':'none'" class="fixed-price">{{6 |Egy}}</div>
+            <div class="discount">{{7 |Egy}}</div>
+        </div>
+
+        <div class="shopping">
+            <button addToShoppingCart>
+                <mat-icon>
+                    add_shopping_cart
+                </mat-icon>
+                اضف الي السلة
+            </button>
+
+            <div product-action>
+
+                <mat-icon share>share</mat-icon>
+
+                <!-- <mat-icon unFavorite>favorite_outline</mat-icon> -->
+                <mat-icon favorite>favorite</mat-icon>
+            </div>
+
+        </div>
 
     </div>
 
