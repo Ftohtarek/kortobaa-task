@@ -1,0 +1,26 @@
+<div class="shopping">
+    <button addToShoppingCart (click)="addToCart()" [disabled]="isAdd">
+        <!-- if product is add to cart  -->
+        <ng-container *ngIf="isAdd">
+            <mat-icon>add_reaction_outline</mat-icon>
+            <span>تم الاضافه بنجاح</span>
+        </ng-container>
+        <!-- if product not exist in cart -->
+        <ng-container *ngIf="!isAdd">
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span>اضف الي السلة</span>
+        </ng-container>
+
+    </button>
+
+    <div product-action>
+        <button>
+            <mat-icon share>share</mat-icon>
+        </button>
+        <button (click)="isFavorite =!isFavorite">
+            <mat-icon *ngIf="!isFavorite" unFavorite>favorite_outline</mat-icon>
+            <mat-icon *ngIf="isFavorite" favorite>favorite</mat-icon>
+        </button>
+    </div>
+
+</div>

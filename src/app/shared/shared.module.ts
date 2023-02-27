@@ -4,6 +4,7 @@ import { MaterialModule } from './modules/material.module';
 import { CardComponent } from './component/card/card.component';
 import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
 import { RatingComponent } from './component/rating/rating.component';
+import { ProductShoppingActionComponent } from './component/product-shopping-action/product-shopping-action.component';
 
 
 
@@ -11,7 +12,8 @@ import { RatingComponent } from './component/rating/rating.component';
   declarations: [
     CardComponent,
     EgyCurrencyPipe,
-    RatingComponent
+    RatingComponent,
+    ProductShoppingActionComponent
     
   ],
   imports: [

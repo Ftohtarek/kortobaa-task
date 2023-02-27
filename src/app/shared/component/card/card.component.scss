@@ -74,46 +74,7 @@
             }
         }
 
-        .shopping {
-            margin-bottom: 5px;
-            @include verticalCenter();
-            justify-content: space-between;
 
-            button[addToShoppingCart] {
-                @include iconButton();
-                @include verticalCenter();
-                background-color: $primaryColor;
-                color: $groundColor;
-                padding: 4px 10px;
-                font-size: $fontSizeCaption;
-                mat-icon{
-                    margin-left: 10px;
-                }
-            }
-
-            div[product-action] {
-                flex-grow: 1;
-                @include verticalCenter();
-                justify-content: space-around;
-
-                button {
-                    @include iconButton();
-                    mat-icon {
-                        &[share] {
-                            color: $dividerGray;
-                        }
-
-                        &[favorite] {
-                            color: tomato;
-                        }
-
-                        &[unFavorite] {
-                            color: $startOff;
-                        }
-                    }
-                }
-            }
-        }
     }
 
 }

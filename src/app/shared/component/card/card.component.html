@@ -21,31 +21,12 @@
         <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
         <rating [rate]="2"></rating>
 
-
         <div class="price">
             <div [style.text-decoration]="true?'line-through':'none'" class="fixed-price">{{6 |Egy}}</div>
             <div class="discount">{{7 |Egy}}</div>
         </div>
 
-        <div class="shopping">
-            <button addToShoppingCart>
-                <mat-icon>
-                    add_shopping_cart
-                </mat-icon>
-                اضف الي السلة
-            </button>
-
-            <div product-action>
-                <button>
-                    <mat-icon share>share</mat-icon>
-                </button>
-                <button>
-                    <!-- <mat-icon unFavorite>favorite_outline</mat-icon> -->
-                    <mat-icon favorite>favorite</mat-icon>
-                </button>
-            </div>
-
-        </div>
+        <product-shopping-action [isFavorite]="true"></product-shopping-action>
 
     </div>
 
