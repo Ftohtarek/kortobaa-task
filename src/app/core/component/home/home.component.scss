@@ -28,6 +28,7 @@ section[productList] {
         align-items: flex-start;
         flex-wrap: nowrap;
         justify-content: center;
+        gap: 2px;
     }
 
     div[newProduct] {
@@ -42,10 +43,11 @@ section[productList] {
     div[lastView] {
         @include verticalCenter();
         flex-wrap: wrap;
+        width: fit-content;
         max-width: 300px;
         justify-content: center;
-        gap: 5px;
-        padding-top: 8px;
+        gap: 12px;
+
     }
 
     div[divider] {
@@ -54,12 +56,14 @@ section[productList] {
         height: 35px;
         @include verticalCenter();
         justify-content: space-between;
-        &.lasView{
+
+        &.lasView {
             justify-content: center;
         }
+
         P {
             @include stripper();
-            font-size: $fontSizeTitle;   
+            font-size: $fontSizeTitle;
         }
 
         span[dividerLine] {
@@ -74,5 +78,11 @@ section[productList] {
             color: $primaryColor;
             border-color: $primaryColor;
         }
+    }
+}
+
+@media only screen and (max-width: 1015px) and (min-width: 900px) {
+    div[lastView] {
+        max-width: 250px !important;
     }
 }
