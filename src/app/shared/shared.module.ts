@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './modules/material.module';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './component/card/card.component';
-import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
-import { RatingComponent } from './component/rating/rating.component';
 import { ProductShoppingActionComponent } from './component/product-shopping-action/product-shopping-action.component';
+import { RatingComponent } from './component/rating/rating.component';
+import { MaterialModule } from './modules/material.module';
+import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
 
 
 
@@ -13,14 +14,15 @@ import { ProductShoppingActionComponent } from './component/product-shopping-act
     CardComponent,
     EgyCurrencyPipe,
     RatingComponent,
-    ProductShoppingActionComponent
-    
+    ProductShoppingActionComponent,
+
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule,
   ],
-  exports:[
+  exports: [
     CardComponent,
     CommonModule,
     MaterialModule

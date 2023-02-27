@@ -50,3 +50,20 @@
         }
     }
 }
+.lastView{
+    button[addToShoppingCart] {
+        @include iconButton();
+        padding: 0;
+        mat-icon{
+            color: $AccentColor;
+            margin: 0;
+        }
+
+        &:disabled{
+            background-color: transparent;
+            mat-icon{
+                color: $seconderyColor;
+            }
+        }
+    }
+}

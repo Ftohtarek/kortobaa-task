@@ -1,36 +1,33 @@
-<p>card works!</p>
 <!-- localization -->
-<div class="card">
-
-    <div class="card-image">
-        <div style="background-image: 'url(../../../../assets/pic.png)'">
-            <div class="card-image-swapper">
-                <button btnIcon="10">
-                    <mat-icon>
-                        swap_horiz
-                    </mat-icon>
-                </button>
-                <button class="newBtn">
-                    جديد
-                </button>
-            </div>
+<div class="card" [class.lastView]="isLastView">
+    <!-- product image  -->
+    <div class="card-image" [style.background-image]="productImgUrl">
+        <div class=" card-image-swapper">
+            <button swap>
+                <mat-icon>
+                    swap_horiz
+                </mat-icon>
+            </button>
+            <button class="newBtn">
+                جديد
+            </button>
         </div>
     </div>
-
+    <!-- product information -->
     <div class="card-body">
-        <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
-        <rating [rate]="2"></rating>
 
+        <!-- title -->
+        <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
+        <!-- rateing -->
+        <rating *ngIf="!isLastView" [rate]="2"></rating>
+        <!-- price  -->
         <div class="price">
             <div [style.text-decoration]="true?'line-through':'none'" class="fixed-price">{{6 |Egy}}</div>
             <div class="discount">{{7 |Egy}}</div>
         </div>
 
-        <product-shopping-action [isFavorite]="true"></product-shopping-action>
-
-    </div>
-
-    <div class="footer">
+        <!-- add shopping to card  -->
+        <product-shopping-action [isFavorite]="true" [isLastView]="isLastView"></product-shopping-action>
 
     </div>
 

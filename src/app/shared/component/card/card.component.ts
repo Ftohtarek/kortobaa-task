@@ -1,14 +1,21 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 
+// init Swiper:
 @Component({
   selector: 'productCard',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements AfterViewInit {
+export class CardComponent implements OnInit {
   constructor(private render: Renderer2) { }
-  ngAfterViewInit(): void {
+  @Input('isLastView') isLastView: boolean = false;
+  productImgUrl: string = ''
 
+  ngOnInit(): void {
+    this.productImgUrl = `url(../../../../assets/pic.png)`
   }
 
+
 }
+

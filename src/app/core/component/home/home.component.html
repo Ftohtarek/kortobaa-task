@@ -1,3 +1,4 @@
+<!-- slider  image -->
 <section class="caption">
     <div class="icon">
         <button>
@@ -11,7 +12,25 @@
         </button>
     </div>
 </section>
+<!-- product list  -->
 
-<section>
-    <productCard></productCard>
+<!--  -->
+<section productList>
+    <div class="container">
+        <div lastView >
+            <div divider class="lasView">
+                <p >منتجات تصفحتها مؤخرا</p>
+            </div>
+            <productCard [isLastView]="true" *ngFor="let item of [].constructor(3)"></productCard>
+        </div>
+
+        <div newProduct>
+            <div divider>
+                <p>وصل حديث</p>
+                <span dividerLine> </span>
+                <button mat-stroked-button>عرض الكل</button>
+            </div>
+            <productCard *ngFor="let item of [].constructor(6)"></productCard>
+        </div>
+    </div>
 </section>
