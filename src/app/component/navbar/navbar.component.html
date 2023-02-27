@@ -11,31 +11,45 @@
                         </h4>
                     </a>
                 </header>
+
                 <div class="search-container">
                     <button id="searchBtn">
                         <i class=" search-icon material-icons">search</i>
                     </button>
                     <input name="searchText" placeholder="عم تبحث">
                 </div>
+
                 <button class="person-icon">
                     <mat-icon>person</mat-icon>
                 </button>
+
                 <div class="cart">
-                    <p>سلة التسوق</p>
-                    <mat-icon>shopping_cart</mat-icon>
+                    <ng-container *ngIf="!smallSize">
+                        <p>سلة التسوق</p>
+                        <mat-icon>shopping_cart</mat-icon>
+                    </ng-container>
+                    <ng-container *ngIf="smallSize">
+                        <mat-icon>shopping_cart</mat-icon>
+                    </ng-container>
                 </div>
 
             </mat-toolbar>
         </div>
     </div>
+
     <!-- second nav that contain nav item and catergories -->
     <div id="items-nav">
-        <mat-toolbar class="container">
+        <div class="container" *ngIf="smallSize">
+            <button menuBtn (click)="openSideBarFn()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+
+        <mat-toolbar class="container" *ngIf="!smallSize">
             <li class="item-list">
                 <a class="item-link" routerLink="" [matMenuTriggerFor]="menu" mat-button>
                     <mat-icon>keyboard_arrow_down</mat-icon>
                     <span> الاقسام</span>
-
                 </a>
             </li>
             <li class="item-list">
@@ -60,4 +74,6 @@
         </mat-toolbar>
     </div>
 
+
+    <slide-nav [open]="openSideBar" (sideState)="trackSidebar($event)"></slide-nav>
 </nav>

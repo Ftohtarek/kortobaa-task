@@ -11,7 +11,8 @@ div[searchNavPlace] {
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 111;
+    z-index: 11;
+
     mat-toolbar {
         background-color: #fff;
         height: 65%;
@@ -99,6 +100,16 @@ div[searchNavPlace] {
 #items-nav {
     height: 40px;
     @include verticalCenter();
+
+    button[menuBtn] {
+        @include iconButton();
+        background-color: $primaryColor;
+        padding: 5px 11px;
+        *{
+            color: #fff;
+            font-size: $fontSizeTitle;
+        }
+    }
 
     * {
         font-size: $fontSizeBodyText;

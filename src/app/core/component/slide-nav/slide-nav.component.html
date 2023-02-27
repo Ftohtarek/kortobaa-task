@@ -1,0 +1,54 @@
+<!-- [ngClass]="open?'open':'close'" -->
+<!-- *ngIf="open" -->
+<nav sidbarOverlay (window:scroll)="stopScrolling()" [@slideInOut]="open ? 'in' : 'out'">
+
+    <div class="container" slideBar>
+        <button mat-icon-button class="close-btn" (click)="close()">
+            <mat-icon class="close">close</mat-icon>
+        </button>
+        
+        <!-- nav item row  -->
+        <div class="row" itemList>
+            <div id="items-nav">
+                <mat-toolbar>
+                    
+                    <li class="item-list">
+                        <a class="item-link" routerLink="" [matMenuTriggerFor]="menu" mat-button>
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                            <span> الاقسام</span>
+                        </a>
+                    </li>
+
+                    <li class="item-list">
+                        <a class="item-link" routerLink="" mat-button>الرئيسة</a>
+                    </li>
+                    
+                    <li class="item-list">
+                        <a class="item-link" routerLink="" mat-button>قائمة الأمنيات</a>
+                    </li>
+                    
+                    <li class="item-list">
+                        <a class="item-link" routerLink="" mat-button>تواصل معنا</a>
+                    </li>
+                    
+                    <li class="item-list">
+                        <a class="item-link" routerLink="" mat-button>من نحن</a>
+                    </li>
+
+                    <mat-menu #menu="matMenu" yPosition="above" xPosition="after">
+                        <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart
+                        </button>
+                        <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart
+                        </button>
+                        <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart
+                        </button>
+                        <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart
+                        </button>
+                    </mat-menu>
+                    
+                </mat-toolbar>
+            </div>
+        </div>
+    </div>
+
+</nav>
