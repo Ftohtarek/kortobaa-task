@@ -45,6 +45,7 @@ section[productList] {
         max-width: 300px;
         justify-content: center;
         gap: 5px;
+        padding-top: 8px;
     }
 
     div[divider] {
@@ -58,8 +59,7 @@ section[productList] {
         }
         P {
             @include stripper();
-            font-size: $fontSizeTitle;
-            
+            font-size: $fontSizeTitle;   
         }
 
         span[dividerLine] {

@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Product } from '../../models/product';
 
 // init Swiper:
 @Component({
@@ -9,11 +10,11 @@ import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@ang
 })
 export class CardComponent implements OnInit {
   constructor(private render: Renderer2) { }
-  @Input('isLastView') isLastView: boolean = false;
+  @Input('product') product: Product = <Product>{};
   productImgUrl: string = ''
 
   ngOnInit(): void {
-    this.productImgUrl = `url(../../../../assets/pic.png)`
+    this.product.discountPersantage
   }
 
 

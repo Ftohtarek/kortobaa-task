@@ -1,15 +1,18 @@
 <!-- localization -->
-<div class="card" [class.lastView]="isLastView">
+<div class="card" [class.lastView]="product.isViewBefor">
     <!-- product image  -->
-    <div class="card-image" [style.background-image]="productImgUrl">
+    <div class="card-image" [style.background-image]="'url(' + product.imgUrl + ')'">
         <div class=" card-image-swapper">
             <button swap>
                 <mat-icon>
                     swap_horiz
                 </mat-icon>
             </button>
-            <button class="newBtn">
+            <button class="newBtn" *ngIf="!product.discountPersantage">
                 جديد
+            </button>
+            <button class="discountBtn" *ngIf="product.discountPersantage">
+                عرض
             </button>
         </div>
     </div>
@@ -19,15 +22,16 @@
         <!-- title -->
         <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
         <!-- rateing -->
-        <rating *ngIf="!isLastView" [rate]="2"></rating>
+        <rating *ngIf="!product?.isViewBefor" [rate]="product.rating"></rating>
         <!-- price  -->
         <div class="price">
-            <div [style.text-decoration]="true?'line-through':'none'" class="fixed-price">{{6 |Egy}}</div>
-            <div class="discount">{{7 |Egy}}</div>
+            <div [style.text-decoration]="product.discountPersantage?'line-through':'none'" class="fixed-price">
+                {{product.price |Egy}}</div>
+            <div class="discount" *ngIf="product?.discountPersantage">{{product.discountPrice |Egy}}</div>
         </div>
 
         <!-- add shopping to card  -->
-        <product-shopping-action [isFavorite]="true" [isLastView]="isLastView"></product-shopping-action>
+        <product-shopping-action [isFavorite]="product.isFavorite" [isLastView]="product.isViewBefor"></product-shopping-action>
 
     </div>
 

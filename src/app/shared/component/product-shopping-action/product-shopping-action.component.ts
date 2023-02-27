@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ProductShoppingActionComponent {
   @Input('isFavorite') isFavorite: boolean = false;
   @Input('isAdd') isAdd: boolean = false;
-  @Input('isLastView') isLastView: boolean = false;
+  @Input('isLastView') isLastView?: boolean = false;
   addToCart() {
     this.isAdd = true
     // should call cart service and send request that add product

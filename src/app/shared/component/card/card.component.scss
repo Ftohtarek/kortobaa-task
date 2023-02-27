@@ -6,8 +6,7 @@
     width: 240px;
     height: 390px;
     overflow: hidden;
-
-    overflow: hidden;
+    background-color: $groundColor;
 
     .card-image {
         height: 60%;
@@ -40,14 +39,17 @@
                 color: $groundColor;
                 border-radius: 12px;
                 padding: 4px 10px;
+            }
 
+            .discountBtn {
+                background-color: $seconderyColor;
             }
         }
     }
 
     .card-body {
         background-color: blue;
-        padding: 5px ;
+        padding: 5px;
         height: 40%;
         background-color: $groundColor;
         @include verticalCenter();
@@ -56,6 +58,7 @@
         * {
             width: 100%;
         }
+
         .product-title {
             @include stripper();
             font-size: $fontSizeTitle;
@@ -86,7 +89,8 @@
     flex-wrap: wrap;
     height: 127px;
     width: 260px;
-    *{
+
+    * {
         font-size: $fontSizeCaption !important;
     }
 

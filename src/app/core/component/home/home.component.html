@@ -17,11 +17,13 @@
 <!--  -->
 <section productList>
     <div class="container">
-        <div lastView >
+        <div lastView>
             <div divider class="lasView">
-                <p >منتجات تصفحتها مؤخرا</p>
+                <p>منتجات تصفحتها مؤخرا</p>
             </div>
-            <productCard [isLastView]="true" *ngFor="let item of [].constructor(3)"></productCard>
+            <ng-container *ngFor="let product of products">
+                <productCard *ngIf="product?.isViewBefor" [product]="product"></productCard>
+            </ng-container>
         </div>
 
         <div newProduct>
@@ -30,7 +32,9 @@
                 <span dividerLine> </span>
                 <button mat-stroked-button>عرض الكل</button>
             </div>
-            <productCard *ngFor="let item of [].constructor(6)"></productCard>
+            <ng-container *ngFor="let product of products">
+                <productCard *ngIf="!product?.isViewBefor" [product]="product"></productCard>
+            </ng-container>
         </div>
     </div>
 </section>
