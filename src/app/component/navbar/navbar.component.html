@@ -1,31 +1,33 @@
 <nav>
     <!-- main nav that contain search input field -->
-    <div id="search-nav">
-        <mat-toolbar class="container">
-            <header>
-                <a mat-button>
-                    <h4>
-                        My App
-                    </h4>
-                </a>
-            </header>
-            <div class="search-container">
-                <button id="searchBtn">
-                    <i class=" search-icon material-icons">search</i>
+    <div searchNavPlace>
+        <div id="search-nav" [ngClass]="{'navbar-hidden': !navbarToggle, 'navbar-visible': navbarToggle}"
+            (window:scroll)="onWindowScroll()" [style.box-shadow]="scrollTop>40?'0px 5px 18px -5px rgba(0,0,0,.1)':''">
+            <mat-toolbar class="container">
+                <header>
+                    <a mat-button>
+                        <h4>
+                            My App
+                        </h4>
+                    </a>
+                </header>
+                <div class="search-container">
+                    <button id="searchBtn">
+                        <i class=" search-icon material-icons">search</i>
+                    </button>
+                    <input name="searchText" placeholder="عم تبحث">
+                </div>
+                <button class="person-icon">
+                    <mat-icon>person</mat-icon>
                 </button>
-                <input name="searchText" placeholder="عم تبحث">
-            </div>
-            <button class="person-icon">
-                <mat-icon>person</mat-icon>
-            </button>
-            <div class="cart">
-                <p>سلة التسوق</p>
-                <mat-icon>shopping_cart</mat-icon>
-            </div>
+                <div class="cart">
+                    <p>سلة التسوق</p>
+                    <mat-icon>shopping_cart</mat-icon>
+                </div>
 
-        </mat-toolbar>
+            </mat-toolbar>
+        </div>
     </div>
-    
     <!-- second nav that contain nav item and catergories -->
     <div id="items-nav">
         <mat-toolbar class="container">

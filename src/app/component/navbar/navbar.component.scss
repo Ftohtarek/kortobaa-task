@@ -1,10 +1,17 @@
 @import '../../../styles.scss';
 
+div[searchNavPlace] {
+    height: 50px;
+}
+
 #search-nav {
     background-color: #fff !important;
     height: 50px;
     @include verticalCenter();
-
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 111;
     mat-toolbar {
         background-color: #fff;
         height: 65%;
@@ -121,11 +128,23 @@
             color: $primaryColor;
 
         }
+
         .menuItem {
-            *{
+            * {
                 background-color: red;
             }
         }
     }
 
+}
+
+// show hide nave bar while scrolling 
+.navbar-hidden {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-visible {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
 }
