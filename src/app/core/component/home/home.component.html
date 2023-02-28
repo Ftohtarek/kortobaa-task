@@ -1,13 +1,14 @@
 <!-- slider  image -->
 <section class="caption">
+    <div class="bgImgCaption" [@backOut]="slide?'inital':direction"></div>
+    <div class="bgImgCaption1" [@backIn]="slide ? 'inital':direction"></div>
     <div class="icon">
-        <button>
+        <!-- right -->
+        <button (click)="bgCaptionImg('right')">
             <mat-icon>arrow_forward_ios</mat-icon>
         </button>
-
-        <!--  -->
-
-        <button>
+        <!-- left -->
+        <button (click)="bgCaptionImg('left')">
             <mat-icon>arrow_back_ios</mat-icon>
         </button>
     </div>
@@ -55,8 +56,7 @@
             <ng-container *ngFor="let product of products">
                 <productCard [@swap]="activeCatergories == 'new' && !product?.isViewBefor? 'in':'out'"
                     [product]="product"></productCard>
-                <productCard [@swap]="activeCatergories == 'all' ? 'in':'out'"
-                    [product]="product"></productCard>
+                <productCard [@swap]="activeCatergories == 'all' ? 'in':'out'" [product]="product"></productCard>
                 <productCard [@swap]="activeCatergories == 'lastView' && product?.isViewBefor? 'in':'out'"
                     [product]="product"></productCard>
 
