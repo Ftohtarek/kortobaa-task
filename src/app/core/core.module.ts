@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NavbarComponent } from '../component/navbar/navbar.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './component/home/home.component';
 import { SlideNavComponent } from './component/slide-nav/slide-nav.component';
+import { NotfoundComponent } from './component/notfound/notfound.component';
 
 
 
@@ -10,7 +11,8 @@ import { SlideNavComponent } from './component/slide-nav/slide-nav.component';
   declarations: [
     NavbarComponent,
     HomeComponent,
-    SlideNavComponent
+    SlideNavComponent,
+    NotfoundComponent
   ],
   imports: [
     SharedModule,

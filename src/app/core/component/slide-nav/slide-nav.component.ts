@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { slideInOutAnimation } from '../animate/animate-triger'
 @Component({
   selector: 'slide-nav',
@@ -10,16 +10,22 @@ import { slideInOutAnimation } from '../animate/animate-triger'
 export class SlideNavComponent {
   @Input('open') open: boolean = false
   @Output('sideState') state = new EventEmitter()
-  stopScrolling() {
-    this.open ?
-      document.body.style.overflow = 'hidden' :
-      document.body.style.overflow = 'scroll'
-
+  @ViewChild('slideBar') slideBar?: ElementRef
+  constructor() {
+  
   }
+
+  scope(event: MouseEvent) {
+    const target: HTMLElement = <HTMLElement>event.target;    
+    const clickedInside = this.slideBar?.nativeElement.contains(target);
+    if (!clickedInside) {
+      this.close()
+    }
+  }
+
   close() {
     this.open = false
     this.state.emit(false)
-    document.body.style.overflow = 'scroll'
 
   }
 }

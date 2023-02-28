@@ -29,16 +29,14 @@ export class NavbarComponent implements AfterViewInit {
 
   }
   // listen if navbar close 
-  trackSidebar(event: boolean) {
-    console.log(event);
-    
-    this.openSideBar = event
+  trackSidebar(state: boolean) {
+    document.body.style.overflow = 'scroll'
+    this.openSideBar = state
   }
 
   openSideBarFn(){
-    console.log(this.openSideBar);
     this.openSideBar =true
-    
+    document.body.style.overflow = 'hidden'
   }
   
   ngAfterViewInit(): void {

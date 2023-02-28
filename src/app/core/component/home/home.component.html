@@ -19,11 +19,12 @@
 <section productList>
     <!--  chip button -->
     <div chip *ngIf="smallSize">
-        <button [class.active-chip]="activeCatergories == 'new'" (click)="activeCatergories = 'new'">وصل حديثاً</button>
-        <button [class.active-chip]="activeCatergories == 'all'" (click)="activeCatergories = 'all'">عرض الكل</button>
-        <button [class.active-chip]="activeCatergories == 'lastView'" (click)="activeCatergories = 'lastView'">منتجات
-            تصفحتها مؤخراً</button>
-        <!-- <button (click)="swap = !swap">swap</button> -->
+        <button routerLinkActive="active-chip" routerLink="/"
+            [queryParams]="{category:'new'}">وصل حديثاً</button>
+        <button routerLinkActive="active-chip" routerLink="/"
+            [queryParams]="{category:'all'}">عرض الكل</button>
+        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'lastView'}">
+            منتجات تصفحتها مؤخراً</button>
 
     </div>
 
