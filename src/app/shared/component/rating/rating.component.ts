@@ -15,9 +15,7 @@ export class RatingComponent implements AfterViewInit {
     this.setRating(this.rate)
   }
 
-  setRating(index: Number) {
-    console.log(index);
-    
+  setRating(index: Number) {    
     const ratingElement: HTMLElement[] = Array.from(this.rating?.nativeElement.children)
     ratingElement.forEach((element, i) => index >= i ?
       this.render.setStyle(element, 'color', '#ffe621') : this.render.setStyle(element, 'color', '#eaeaea')

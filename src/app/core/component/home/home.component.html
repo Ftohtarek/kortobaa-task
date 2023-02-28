@@ -16,13 +16,24 @@
 
 <!--  -->
 <section productList>
-    <div class="container">
+    <!--  chip button -->
+    <div chip *ngIf="smallSize">
+        <button [class.active-chip]="activeCatergories == 'new'" (click)="activeCatergories = 'new'">وصل حديثاً</button>
+        <button [class.active-chip]="activeCatergories == 'all'" (click)="activeCatergories = 'all'">عرض الكل</button>
+        <button [class.active-chip]="activeCatergories == 'lastView'" (click)="activeCatergories = 'lastView'">منتجات
+            تصفحتها مؤخراً</button>
+        <!-- <button (click)="swap = !swap">swap</button> -->
+
+    </div>
+
+    <!-- product list view  -->
+    <div class="container" *ngIf="!smallSize">
         <div lastView>
             <div divider class="lasView">
                 <p>منتجات تصفحتها مؤخرا</p>
             </div>
             <ng-container *ngFor="let product of products">
-                <productCard *ngIf="product?.isViewBefor" [product]="product"></productCard>
+                <productCard *ngIf="product?.isViewBefor" [smallCard]="true" [product]="product"></productCard>
             </ng-container>
         </div>
 
@@ -34,6 +45,21 @@
             </div>
             <ng-container *ngFor="let product of products">
                 <productCard *ngIf="!product?.isViewBefor" [product]="product"></productCard>
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- Product list in small mode  -->
+    <div swap *ngIf="smallSize">
+        <div newProduct>
+            <ng-container *ngFor="let product of products">
+                <productCard [@swap]="activeCatergories == 'new' && !product?.isViewBefor? 'in':'out'"
+                    [product]="product"></productCard>
+                <productCard [@swap]="activeCatergories == 'all' ? 'in':'out'"
+                    [product]="product"></productCard>
+                <productCard [@swap]="activeCatergories == 'lastView' && product?.isViewBefor? 'in':'out'"
+                    [product]="product"></productCard>
+
             </ng-container>
         </div>
     </div>

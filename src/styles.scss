@@ -64,15 +64,14 @@ body {
     margin: 0px;
     box-sizing: border-box;
 }
+
 .menuItem {
-    *{
+    * {
         color: $primaryColor;
         min-width: 150px;
         text-align: center;
     }
 }
-
-
 
 .container {
     width: 100%;
@@ -106,4 +105,5 @@ body {
         max-width: 100%;
         padding: 0 5px;
     }
+
 }

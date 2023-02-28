@@ -1,5 +1,5 @@
 <!-- localization -->
-<div class="card" [class.lastView]="product.isViewBefor">
+<div class="card" [class.lastView]="isSmallCard">
     <!-- product image  -->
     <div class="card-image" [style.background-image]="'url(' + product.imgUrl + ')'">
         <div class=" card-image-swapper">
@@ -22,7 +22,7 @@
         <!-- title -->
         <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
         <!-- rateing -->
-        <rating *ngIf="!product?.isViewBefor" [rate]="product.rating"></rating>
+        <rating *ngIf="!isSmallCard" [rate]="product.rating"></rating>
         <!-- price  -->
         <div class="price">
             <div [style.text-decoration]="product.discountPersantage?'line-through':'none'" class="fixed-price">
@@ -31,7 +31,7 @@
         </div>
 
         <!-- add shopping to card  -->
-        <product-shopping-action [isFavorite]="product.isFavorite" [isLastView]="product.isViewBefor"></product-shopping-action>
+        <product-shopping-action [isFavorite]="product.isFavorite" [isLastView]="isSmallCard"></product-shopping-action>
 
     </div>
 

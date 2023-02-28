@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 export class CdkLayoutService {
   state$: Observable<any>
   breakPoints;
+  private appSmallMode = "(max-width: 768px)";
   constructor(private obsrever: BreakpointObserver) {
-    this.state$ = this.obsrever.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
-    this.breakPoints = Breakpoints
+    this.state$ = this.obsrever.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, this.appSmallMode])
+    this.breakPoints = { ...Breakpoints, appSmallMode: this.appSmallMode }
   }
 }

@@ -1,11 +1,19 @@
 @import '../../../../styles.scss';
 
+@mixin productListGrid() {
+    @include verticalCenter();
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    flex-grow: 1;
+}
+
 .caption {
     height: 50vh;
     width: 100%;
     background-image: url('../../../../assets/background-image.png');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     @include verticalCenter();
 }
 
@@ -23,6 +31,8 @@
 }
 
 section[productList] {
+    overflow: hidden;
+
     .container {
         @include verticalCenter();
         align-items: flex-start;
@@ -32,12 +42,7 @@ section[productList] {
     }
 
     div[newProduct] {
-        @include verticalCenter();
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        flex-grow: 1;
-
+        @include productListGrid();
     }
 
     div[lastView] {
@@ -52,8 +57,8 @@ section[productList] {
 
     div[divider] {
         margin: 25px auto;
-        width: 100%;
         height: 35px;
+        width: 100%;
         @include verticalCenter();
         justify-content: space-between;
 
@@ -79,10 +84,41 @@ section[productList] {
             border-color: $primaryColor;
         }
     }
+
+    div[chip] {
+        margin: 25px auto;
+        height: 35px;
+
+        @include verticalCenter();
+        justify-content: center;
+        gap: 5px;
+
+        button {
+            @include iconButton();
+            background-color: $startOff ;
+            font-size: $fontSizeCaption ;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all .3s;
+        }
+    }
+
+    .active-chip {
+        background-color: tomato;
+        color: white;
+    }
+}
+
+div[swap] {
+    @include productListGrid();
+
+
 }
 
 @media only screen and (max-width: 1015px) and (min-width: 900px) {
     div[lastView] {
         max-width: 250px !important;
     }
+
+
 }

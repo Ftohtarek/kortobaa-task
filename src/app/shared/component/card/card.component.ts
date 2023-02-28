@@ -11,8 +11,8 @@ import { Product } from '../../models/product';
 export class CardComponent implements OnInit {
   constructor(private render: Renderer2) { }
   @Input('product') product: Product = <Product>{};
+  @Input('smallCard') isSmallCard: boolean = false
   productImgUrl: string = ''
-
   ngOnInit(): void {
     this.product.discountPersantage
   }
