@@ -1,19 +1,18 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { CdkLayoutService } from 'src/app/shared/service/cdk-layout.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements AfterViewInit {
-
+export class NavbarComponent  {
+  @Input('smallSize') smallSize?: boolean;
   navbarToggle: boolean = true
   TimeOut: any;
   scrollTop: any;
-  smallSize: boolean = false;
+
   openSideBar: boolean = false;
-  constructor(private layout: CdkLayoutService) { }
+  constructor() { }
 
   /* sticky scroll Navbar */
   onWindowScroll() {
@@ -39,15 +38,5 @@ export class NavbarComponent implements AfterViewInit {
     document.body.style.overflow = 'hidden'
   }
   
-  ngAfterViewInit(): void {
-    this.layout.state$.subscribe((state) => {
-      if (state.breakpoints[this.layout.breakPoints.XSmall]) {
-        this.smallSize = true
-      }
-      else {
-        this.smallSize = false
-      }
-    })
-  }
 
 }

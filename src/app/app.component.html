@@ -1,2 +1,4 @@
-<navbar></navbar>
-<home></home>
+<navbar  [smallSize]="isSmallSize"></navbar>
+<router-outlet >
+    <home [smallSize]="isSmallSize"></home>
+</router-outlet>
