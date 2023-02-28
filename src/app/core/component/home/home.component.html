@@ -19,10 +19,8 @@
 <section productList>
     <!--  chip button -->
     <div chip *ngIf="smallSize">
-        <button routerLinkActive="active-chip" routerLink="/"
-            [queryParams]="{category:'new'}">وصل حديثاً</button>
-        <button routerLinkActive="active-chip" routerLink="/"
-            [queryParams]="{category:'all'}">عرض الكل</button>
+        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'new'}">وصل حديثاً</button>
+        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'all'}">عرض الكل</button>
         <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'lastView'}">
             منتجات تصفحتها مؤخراً</button>
 
@@ -55,10 +53,12 @@
     <div swap *ngIf="smallSize">
         <div newProduct>
             <ng-container *ngFor="let product of products">
-                <productCard [@swap]="activeCatergories == 'new' && !product?.isViewBefor? 'in':'out'"
+
+                <productCard [@swap]="activeCategory == 'new' && !product?.isViewBefor? 'in':'out'"
                     [product]="product"></productCard>
-                <productCard [@swap]="activeCatergories == 'all' ? 'in':'out'" [product]="product"></productCard>
-                <productCard [@swap]="activeCatergories == 'lastView' && product?.isViewBefor? 'in':'out'"
+
+                <productCard [@swap]="activeCategory == 'all' ? 'in':'out'" [product]="product"></productCard>
+                <productCard [@swap]="activeCategory == 'lastView' && product?.isViewBefor? 'in':'out'"
                     [product]="product"></productCard>
 
             </ng-container>

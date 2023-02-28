@@ -14,7 +14,7 @@ import { swapAnimation, backoutAnimation, backInAnimation } from '../animate/ani
 export class HomeComponent implements OnInit, AfterViewInit {
   products: Product[] = <Product[]>[];
   // productCategories = { new: 'new', all: 'all', lastView: 'lastView' }
-  activeCatergories = 'new';
+  activeCategory: any;
   // resbonse on slider caption animation 
   smallSize: boolean = false;
   slide = false;
@@ -29,10 +29,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.products = new Products(this.productService.products).products
+    
     this.router.queryParamMap.subscribe(param => {
-      const category = param.get('category')
-      !category ? this.route.navigate(['/'], { queryParams: { 'category': 'new' } }) : null
-      
+      this.activeCategory = param.get('category')
+      !this.activeCategory ? this.route.navigate(['/'], { queryParams: { 'category': 'new' } }) : null
     })
   }
 

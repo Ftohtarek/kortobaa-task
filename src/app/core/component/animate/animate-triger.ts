@@ -2,10 +2,10 @@ import { trigger, state, style, transition, animate, group, keyframes } from '@a
 
 export const slideInOutAnimation = trigger('slideInOut', [
   state('in', style({
-    'max-width': '100%', 'opacity': '1','display':'block'
+    'max-width': '100%', 'opacity': '1', 'display': 'block'
   })),
   state('out', style({
-    'max-width': '0px', 'opacity': '0','display':'none'
+    'max-width': '0px', 'opacity': '0', 'display': 'none'
   })),
 
   transition('in => out', [group([
@@ -37,7 +37,7 @@ export const slideInOutAnimation = trigger('slideInOut', [
 
 export const swapAnimation = trigger('swap', [
   state('in', style({
-    'opacity': '1', 'display': 'block', 'transform': 'scale3d(1)'
+    'opacity': '1', 'display': 'block', 'transform': 'scale3d(1,1,1)'
   })),
   state('out', style({
     'opacity': '0', 'display': 'none', 'transform': 'scale3d(0.1, 0.1, 0.1)'
@@ -45,15 +45,12 @@ export const swapAnimation = trigger('swap', [
 
   transition('in => out', [
     group([
-      animate('300ms ease-in-out', style({
+      animate('1000ms ease-in-out', style({
         'transform': ' scale3d(0.1, 0.1, 0.1)'
       })),
-      animate('400ms ease-in-out', style({
-        'opacity': '0'
+      animate('1000ms ease-in-out', style({
+        'opacity': '0', 'display': 'none'
       })),
-      animate('400ms ease-in-out', style({
-        'display': 'none'
-      }))
     ]
     )]),
 
