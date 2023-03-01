@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate, group, keyframes } from '@angular/animations';
+import { animate, group, state, style, transition, trigger } from '@angular/animations';
 
 export const slideInOutAnimation = trigger('slideInOut', [
   state('in', style({
@@ -69,71 +69,4 @@ export const swapAnimation = trigger('swap', [
   )
 ]);
 
-export const backoutAnimation = trigger('backOut', [
-  state('inital', style({ 'opacity': '1', 'transform': 'translateX(0px) scale(1)' })),
-
-  state('left', style({ 'opacity': '1' })),
-
-  state('right', style({ 'opacity': '0' })),
-
-  transition('inital => right', [
-    group([
-      animate('300ms ease-in-out', style({
-        'transform': ' translateX(0px) ',
-        'opacity': ' 0.7'
-      })),
-
-      animate('600ms ease-in-out', style({
-        'transform': ' translateX(100%) scale(0.0)',
-        'opacity': ' 0.2'
-      })),
-
-    ]
-    )]),
-
-  transition('inital => left', [
-    group([
-      animate('300ms ease-in-out', style({
-        'transform': ' translateX(0px) ',
-        'opacity': ' 0.7'
-      })),
-
-      animate('600ms ease-in-out', style({
-        'transform': ' translateX(-100%) scale(0.2)',
-        'opacity': ' 0.2'
-      })),
-
-    ]
-    )]),
-]);
-
-export const backInAnimation = trigger('backIn', [
-
-  transition('inital=> right', [
-    style({ ' transform': 'translateX(100%) scale(0)' }),
-
-    group([
-      animate('300ms ease-in-out', style({
-        'transform': ' translateX(-100%) scale(0.3)',
-      })),
-
-      animate('600ms ease-in-out', style({
-        'transform': 'scale(1)',
-      })),
-    ]
-    )]),
-
-  transition('inital => left', [
-    style({ ' transform': 'translateX(-100%) scale(0)' }),
-    group([
-      animate('300ms ease-in-out', style({
-        'transform': ' translateX(100%) scale(0.7)',
-      })),
-
-      animate('600ms ease-in-out', style({
-        'transform': 'scale(1)',
-      })),
-    ]
-    )]),
-]);
 

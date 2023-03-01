@@ -1,0 +1,148 @@
+@import '../../../../styles.scss';
+
+section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.bgImgCaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.icon {
+    position: absolute;
+    @include verticalCenter();
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+
+    button {
+        @include iconButton;
+        @include verticalCenter();
+        color: $groundColor;
+        background-color: rgba($color: #fff, $alpha: .3);
+        padding: 15px 9px;
+        margin: 3px;
+
+        mat-icon {
+            font-size: 12px;
+            height: fit-content;
+        }
+    }
+}
+
+@mixin outAnimation() {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@mixin inAnimation() {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+.backOutLeft {
+    animation-name: backOutLeft;
+    @include outAnimation();
+
+}
+
+.backOutRight {
+    animation-name: backOutRight;
+    @include outAnimation();
+}
+
+.backInLeft {
+    @include inAnimation();
+    animation-name: backInLeft;
+}
+
+.backInRight {
+    @include inAnimation();
+    animation-name: backInRight;
+}
+
+
+@keyframes backOutLeft {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate3d(0,0,0);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.1) translate3d(-2000px, 0, 0);
+    }
+}
+
+@keyframes backOutRight {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate3d(0,0,0);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.1) translate3d(2000px, 0, 0);
+    }
+}
+
+@keyframes backInLeft {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    }
+
+}
+
+@keyframes backInRight {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    }
+}

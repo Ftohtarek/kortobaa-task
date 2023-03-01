@@ -27,7 +27,6 @@ import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
     CardComponent,
     CommonModule,
     MaterialModule,
-    RouterModule
   ]
 })
 export class SharedModule { }

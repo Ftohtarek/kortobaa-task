@@ -1,21 +1,9 @@
 <!-- slider  image -->
 <section class="caption">
-    <div class="bgImgCaption" [@backOut]="slide?'inital':direction"></div>
-    <div class="bgImgCaption1" [@backIn]="slide ? 'inital':direction"></div>
-    <div class="icon">
-        <!-- right -->
-        <button (click)="bgCaptionImg('right')">
-            <mat-icon>arrow_forward_ios</mat-icon>
-        </button>
-        <!-- left -->
-        <button (click)="bgCaptionImg('left')">
-            <mat-icon>arrow_back_ios</mat-icon>
-        </button>
-    </div>
+    <caption-slider [imgList]="bgImgList"> </caption-slider>
 </section>
-<!-- product list  -->
 
-<!--  -->
+<!-- product list  -->
 <section productList>
     <!--  chip button -->
     <div chip *ngIf="smallSize">
@@ -23,11 +11,11 @@
         <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'all'}">عرض الكل</button>
         <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'lastView'}">
             منتجات تصفحتها مؤخراً</button>
-
     </div>
 
     <!-- product list view  -->
     <div class="container" *ngIf="!smallSize">
+
         <div lastView>
             <div divider class="lasView">
                 <p>منتجات تصفحتها مؤخرا</p>
@@ -47,6 +35,7 @@
                 <productCard *ngIf="!product?.isViewBefor" [product]="product"></productCard>
             </ng-container>
         </div>
+
     </div>
 
     <!-- Product list in small mode  -->
@@ -54,8 +43,8 @@
         <div newProduct>
             <ng-container *ngFor="let product of products">
 
-                <productCard [@swap]="activeCategory == 'new' && !product?.isViewBefor? 'in':'out'"
-                    [product]="product"></productCard>
+                <productCard [@swap]="activeCategory == 'new' && !product?.isViewBefor? 'in':'out'" [product]="product">
+                </productCard>
 
                 <productCard [@swap]="activeCategory == 'all' ? 'in':'out'" [product]="product"></productCard>
                 <productCard [@swap]="activeCategory == 'lastView' && product?.isViewBefor? 'in':'out'"
@@ -64,4 +53,5 @@
             </ng-container>
         </div>
     </div>
+
 </section>

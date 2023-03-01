@@ -100,4 +100,13 @@ export class MockService {
         },
 
     ]
+
+    bgImages=[
+        '../../../../assets/bgImg/background-image.png',
+        '../../../../assets/bgImg/img1.jpg',
+        '../../../../assets/bgImg/img2.jpg',
+        // '../../../../assets/bgImg/background-image.png',
+        // '../../../../assets/bgImg/img1.jpg',
+        // '../../../../assets/bgImg/img2.jpg',
+    ]
 }
