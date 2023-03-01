@@ -1,7 +1,7 @@
 <!-- localization -->
 <div class="card" [class.lastView]="isSmallCard">
     <!-- product image  -->
-    <div class="card-image" [style.background-image]="'url(' + product.imgUrl + ')'">
+    <div class="card-image skeleton" [style.background-image]="'url(' + product.imgUrl + ')'">
         <div class=" card-image-swapper">
             <button swap>
                 <mat-icon>
@@ -20,18 +20,22 @@
     <div class="card-body">
 
         <!-- title -->
-        <h4 class="product-title">تيشرت-شتوي-3-خصم</h4>
+
+        <h4 class="product-title skeleton" [ngClass]="!isSmallCard ? 'skeleton-card__text':'skeleton-small_card__text'">
+            تيشرت-شتوي-3-خصم</h4>
         <!-- rateing -->
         <rating *ngIf="!isSmallCard" [rate]="product.rating"></rating>
         <!-- price  -->
-        <div class="price">
+        <div class="price skeleton skeleton-card__text" >
             <div [style.text-decoration]="product.discountPersantage?'line-through':'none'" class="fixed-price">
-                {{product.price |Egy}}</div>
+                {{product.price |Egy}}
+            </div>
             <div class="discount" *ngIf="product?.discountPersantage">{{product.discountPrice |Egy}}</div>
         </div>
 
         <!-- add shopping to card  -->
-        <product-shopping-action [isFavorite]="product.isFavorite" [isLastView]="isSmallCard"></product-shopping-action>
+        <product-shopping-action class="skeleton" [ngClass]="isSmallCard ? 'skeleton-small_card__footer':'skeleton-card__footer'"
+            [isFavorite]="product.isFavorite" [isLastView]="isSmallCard"></product-shopping-action>
 
     </div>
 

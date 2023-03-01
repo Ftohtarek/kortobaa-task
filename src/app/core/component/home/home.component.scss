@@ -104,3 +104,9 @@ div[swap] {
 
 
 }
+
+@media screen  and (max-width: 1199px) {
+    div[divider]{
+        width: 75% !important;
+    }
+}

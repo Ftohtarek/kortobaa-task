@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
 $fontSizeH1: 24pt;
 $fontSizeH2: 18pt;
 $fontSizeH3: 18pt;
@@ -54,15 +55,19 @@ $groundColor: #ffffff;
 body {
     direction: rtl;
     margin: 0;
-    font-family: 'Cairo', sans-serif;
     background-color: $bgColor;
-    font-size: $fontSizeBodyText;
 }
 
 * {
-    padding: 0px;
-    margin: 0px;
+    &:not(mat-icon, button) {
+        font-family: 'Cairo', sans-serif;
+        margin: 0px;
+        padding: 0px;
+    }
+
     box-sizing: border-box;
+    letter-spacing: normal;
+
 }
 
 .menuItem {
@@ -72,6 +77,114 @@ body {
         text-align: center;
     }
 }
+
+.active-navItem {
+    // background-color: red;
+    font-weight: 800;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/* skeleton  */
+
+@mixin skeletonNativeDesign() {
+    position: relative;
+    overflow: hidden;
+
+    * {
+        color: transparent !important;
+        background-color: transparent !important;
+    }
+
+    z-index: 3;
+
+    &::after {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+
+.active-skeleton {
+    
+    .skeleton {
+        @include skeletonNativeDesign();
+
+        &::after {
+            animation: skeleton-loading 1s linear infinite alternate;
+            z-index: 2;
+        }
+
+    }
+
+    .skeleton-slider {
+        @include skeletonNativeDesign();
+
+        &::after {
+            border-radius: 0px;
+        }
+    }
+
+    .skeleton-nav_item {
+        &::after {
+            height: .7rem;
+            margin: auto;
+        }
+    }
+
+    .skeleton-card__text {
+        ::after {
+            height: .7rem;
+            width: 40%;
+        }
+    }
+
+    .skeleton-small_card__text {
+        ::after {
+            height: .3rem !important;
+            width: 40%;
+        }
+    }
+
+    .skeleton-card__footer {
+        ::after {
+            height: .7rem;
+            width: 80%;
+        }
+    }
+
+    .skeleton-small_card__footer {
+        ::after {
+            height: .3rem !important;
+            width: 40%;
+        }
+    }
+
+    .skeleton_none {
+        &::after {
+            animation: none;
+        }
+    }
+
+
+}
+
 
 .container {
     width: 100%;

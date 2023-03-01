@@ -7,7 +7,7 @@ export class MockService {
     constructor() { }
     products: Product[] = [
         {
-            title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
+            title: 'تيشيرت-كم طويل-آرت ',
             imgUrl: '../../../assets/lastView/pic.png',
             isFavorite: true,
             price: 90,
@@ -15,7 +15,7 @@ export class MockService {
             isViewBefor: true,
         },
         {
-            title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
+            title: 'تيشيرت-كم طويل-آرت ',
             imgUrl: '../../../assets/lastView/pic1.png',
             isFavorite: false,
             price: 90,
@@ -24,7 +24,7 @@ export class MockService {
             discountPersantage:10,
         },
         {
-            title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
+            title: 'تيشيرت-كم طويل-آرت',
             imgUrl: '../../../assets/lastView/pic2.png',
             isFavorite: true,
             price: 90,

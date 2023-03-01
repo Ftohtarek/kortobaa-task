@@ -90,11 +90,13 @@
     height: 121px;
     width: 260px;
 
+    h4{
+        font-size: 13px !important;
+    }
     * {
-        font-size: $fontSizeCaption !important;
+        font-size: $fontSizeCaption;
     }
 
-    // width: 300px;
     .card-image {
         height: 100%;
         width: 40%;
@@ -116,14 +118,19 @@
 
     .lastView {
         width: 245px;
-    }
 
+    }
     .card {
         width: 220px;
     }
 }
 @media only screen and (max-width: 1015px ) and (min-width: 900px ){
     .card {
-        width: 210px;
+        width: 220px;
+    }
+}
+@media only screen and (max-width: 768px ){
+    h4{
+        font-size: $fontSizeBodyText !important; 
     }
 }

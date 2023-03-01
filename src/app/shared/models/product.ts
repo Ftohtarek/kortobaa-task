@@ -8,10 +8,10 @@ export interface Product {
     isViewBefor?: boolean;
     discountPrice?: number
 }
+
 export class Products {
     constructor(public products: Product[]) {
         this.products.map(product => this.productMapping(product))
-
     }
 
     private productMapping(product: Product): Product {

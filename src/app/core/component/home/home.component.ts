@@ -14,7 +14,10 @@ import { swapAnimation } from '../animate/animate-triger';
 })
 export class HomeComponent implements OnInit {
   smallSize?: boolean;
-  products: Product[] = <Product[]>[];
+  waiting: boolean = true;
+  /* fake data to loop throw product to build skeleton design  */
+  products: Product[] = <any>[{ isViewBefor: true }, { isViewBefor: true }, { isViewBefor: true }, 1, 2, 3]
+
   activeCategory: any;
 
   // resbonse on slider caption animation 
@@ -35,8 +38,14 @@ export class HomeComponent implements OnInit {
   /*on component init trace the url query and call cdkLayout 
   Service that resbonse on handling of responsive of application  */
   ngOnInit(): void {
-    this.products = new Products(this.mockDate.products).products
-    this.bgImgList = this.mockDate.bgImages
+    
+    /* this sould be responce from serve */
+    setTimeout(() => {
+      this.waiting=false
+      this.products = new Products(this.mockDate.products).products
+      this.bgImgList = this.mockDate.bgImages
+    }, 4000);
+    
     this.layout.isSmallMode.pipe(
       switchMap(isTabletMode => {
         this.smallSize = isTabletMode

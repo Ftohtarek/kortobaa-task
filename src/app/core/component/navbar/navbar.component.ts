@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
   // propery require to handle sidebar apperance
   smallSize?: boolean;
   openSideBar: boolean = false;
-
+  waiting: boolean = true
   /* property used to handle sticky navbar */
   navbarToggle: boolean = true
   scrollTop: any;
@@ -18,6 +18,10 @@ export class NavbarComponent implements OnInit {
 
   constructor(private layout: CdkLayoutService) { }
   ngOnInit(): void {
+    // shoud be resbonse on categery from serve
+    setTimeout(() => {
+        this.waiting=false
+    }, 3000);
     this.layout.isSmallMode.subscribe(isTabletMode => this.smallSize = isTabletMode)
   }
   /* trace sticky scroll Navbar will scrolling  */

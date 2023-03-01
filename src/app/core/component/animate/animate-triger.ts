@@ -25,10 +25,10 @@ export const slideInOutAnimation = trigger('slideInOut', [
     style({ 'display': 'block' }),
 
     group([
-      animate('800ms ease-in-out', style({
+      animate('400ms ease-in-out', style({
         'max-width': '100%'
       })),
-      animate('1000ms ease-in-out', style({
+      animate('600ms ease-in-out', style({
         'opacity': '1'
       }))
     ]

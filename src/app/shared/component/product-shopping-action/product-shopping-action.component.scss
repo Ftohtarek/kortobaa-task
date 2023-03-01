@@ -10,18 +10,24 @@
         @include verticalCenter();
         background-color: $primaryColor;
         color: $groundColor;
-        padding: 4px 10px;
+        padding: 4px 8px;
+        min-width: 55%;
+        border-radius: 14px;
         font-size: $fontSizeCaption;
-        mat-icon{
+
+        mat-icon {
             margin-left: 10px;
         }
-        &:disabled{
+
+        &:disabled {
             color: $seconderyColor;
             background-color: $startOff;
-            &:active{
+
+            &:active {
                 filter: none;
             }
-            &:hover{
+
+            &:hover {
                 filter: none;
             }
         }
@@ -34,6 +40,7 @@
 
         button {
             @include iconButton();
+
             mat-icon {
                 &[share] {
                     color: $AccentColor;
@@ -50,20 +57,29 @@
         }
     }
 }
-.lastView{
+
+.lastView {
     button[addToShoppingCart] {
         @include iconButton();
         padding: 0;
-        mat-icon{
+
+        mat-icon {
             color: $AccentColor;
             margin: 0;
         }
 
-        &:disabled{
+        &:disabled {
             background-color: transparent;
-            mat-icon{
+
+            mat-icon {
                 color: $seconderyColor;
             }
         }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    button[addToShoppingCart] {
+        font-size: 10pt !important;
     }
 }

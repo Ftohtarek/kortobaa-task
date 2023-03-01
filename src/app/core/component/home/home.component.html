@@ -1,57 +1,61 @@
 <!-- slider  image -->
-<section class="caption">
-    <caption-slider [imgList]="bgImgList"> </caption-slider>
-</section>
+<section [class.active-skeleton]="waiting">
 
-<!-- product list  -->
-<section productList>
-    <!--  chip button -->
-    <div chip *ngIf="smallSize">
-        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'new'}">وصل حديثاً</button>
-        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'all'}">عرض الكل</button>
-        <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'lastView'}">
-            منتجات تصفحتها مؤخراً</button>
-    </div>
+    <section class="caption skeleton skeleton-slider">
+        <caption-slider [imgList]="bgImgList"> </caption-slider>
+    </section>
 
-    <!-- product list view  -->
-    <div class="container" *ngIf="!smallSize">
+    <!-- product list  -->
+    <section productList>
+        <!-- product list view  -->
+        <div class="container" *ngIf="!smallSize">
 
-        <div lastView>
-            <div divider class="lasView">
-                <p>منتجات تصفحتها مؤخرا</p>
+            <div lastView>
+                <div divider class="lasView">
+                    <p>منتجات تصفحتها مؤخرا</p>
+                </div>
+                <ng-container *ngFor="let product of products">
+                    <productCard *ngIf="product?.isViewBefor" [smallCard]="true" [product]="product"></productCard>
+                </ng-container>
             </div>
-            <ng-container *ngFor="let product of products">
-                <productCard *ngIf="product?.isViewBefor" [smallCard]="true" [product]="product"></productCard>
-            </ng-container>
-        </div>
 
-        <div newProduct>
-            <div divider>
-                <p>وصل حديث</p>
-                <span dividerLine> </span>
-                <button mat-stroked-button>عرض الكل</button>
+            <div newProduct>
+                <div divider>
+                    <p>وصل حديث</p>
+                    <span dividerLine> </span>
+                    <button mat-stroked-button>عرض الكل</button>
+                </div>
+                <ng-container *ngFor="let product of products">
+                    <productCard *ngIf="!product?.isViewBefor" [product]="product"></productCard>
+                </ng-container>
             </div>
-            <ng-container *ngFor="let product of products">
-                <productCard *ngIf="!product?.isViewBefor" [product]="product"></productCard>
-            </ng-container>
+
         </div>
 
-    </div>
-
-    <!-- Product list in small mode  -->
-    <div swap *ngIf="smallSize">
-        <div newProduct>
-            <ng-container *ngFor="let product of products">
-
-                <productCard [@swap]="activeCategory == 'new' && !product?.isViewBefor? 'in':'out'" [product]="product">
-                </productCard>
-
-                <productCard [@swap]="activeCategory == 'all' ? 'in':'out'" [product]="product"></productCard>
-                <productCard [@swap]="activeCategory == 'lastView' && product?.isViewBefor? 'in':'out'"
-                    [product]="product"></productCard>
-
-            </ng-container>
+        <!--  chip button -->
+        <div chip *ngIf="smallSize">
+            <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'new'}">وصل حديثاً</button>
+            <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'all'}">عرض الكل</button>
+            <button routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'lastView'}">
+                منتجات تصفحتها مؤخراً</button>
         </div>
-    </div>
 
+        <!-- Product list in small mode  -->
+        <div swap *ngIf="smallSize">
+            <div newProduct>
+                <ng-container *ngFor="let product of products">
+
+                    <productCard [@swap]="activeCategory == 'new' && !product?.isViewBefor? 'in':'out'"
+                        [product]="product">
+                    </productCard>
+
+                    <productCard [@swap]="activeCategory == 'all' ? 'in':'out'" [product]="product"></productCard>
+                    <productCard [@swap]="activeCategory == 'lastView' && product?.isViewBefor? 'in':'out'"
+                        [product]="product"></productCard>
+
+                </ng-container>
+            </div>
+        </div>
+
+    </section>
 </section>

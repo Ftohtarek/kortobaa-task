@@ -1,29 +1,27 @@
-<nav>
+<nav [class.active-skeleton]="waiting">
     <!-- main nav that contain search input field -->
     <div searchNavPlace>
         <div id="search-nav" [ngClass]="{'navbar-hidden': !navbarToggle, 'navbar-visible': navbarToggle}"
             (window:scroll)="onWindowScroll()" [style.box-shadow]="scrollTop>40?'0px 5px 18px -5px rgba(0,0,0,.1)':''">
             <mat-toolbar class="container">
                 <header>
-                    <a mat-button>
-                        <h4>
-                            My App
-                        </h4>
-                    </a>
+                    <button routerLink="home">
+                        <img src="../../../../assets/logo/logo.png" alt="">
+                    </button>
                 </header>
 
-                <div class="search-container">
+                <div class="search-container skeleton ">
                     <button id="searchBtn">
-                        <i class=" search-icon material-icons">search</i>
+                        <mat-icon class="search-icon">search</mat-icon>
                     </button>
                     <input name="searchText" placeholder="عم تبحث">
                 </div>
 
-                <button class="person-icon">
+                <button class="person-icon skeleton" >
                     <mat-icon>person</mat-icon>
                 </button>
 
-                <div class="cart">
+                <div class="cart skeleton" >
                     <ng-container *ngIf="!smallSize">
                         <p>سلة التسوق</p>
                         <mat-icon>shopping_cart</mat-icon>
@@ -40,36 +38,38 @@
     <!-- second nav that contain nav item and catergories -->
     <div id="items-nav">
         <div class="container" *ngIf="smallSize">
-            <button menuBtn (click)="openSideBarFn()">
+            <button class="skeleton" menuBtn (click)="openSideBarFn()">
                 <mat-icon>menu</mat-icon>
             </button>
         </div>
 
         <mat-toolbar class="container" *ngIf="!smallSize">
-            <li class="item-list">
-                <a class="item-link" routerLink="" [matMenuTriggerFor]="menu" mat-button>
+            <li class="item-list skeleton skeleton-nav_item ">
+                <a class="item-link" [matMenuTriggerFor]="menu" mat-button>
                     <mat-icon>keyboard_arrow_down</mat-icon>
                     <span> الاقسام</span>
                 </a>
             </li>
-            <li class="item-list">
-                <a class="item-link" routerLink="/" mat-button>الرئيسة</a>
+
+            <li class="item-list skeleton skeleton-nav_item ">
+                <a class="item-link" routerLink="/" routerLinkActive="active-navItem"  mat-button>الرئيسة</a>
             </li>
-            <li class="item-list">
+
+            <li class="item-list skeleton skeleton-nav_item ">
                 <a class="item-link" routerLink="" mat-button>قائمة الأمنيات</a>
             </li>
-            <li class="item-list">
+            <li class="item-list skeleton skeleton-nav_item ">
                 <a class="item-link" routerLink="" mat-button>تواصل معنا</a>
             </li>
-            <li class="item-list">
+            <li class="item-list skeleton skeleton-nav_item ">
                 <a class="item-link" routerLink="" mat-button>من نحن</a>
             </li>
 
             <mat-menu #menu="matMenu" yPosition="below">
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">depart </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الاول </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الثاني</button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الثالث</button>
+                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الرابع </button>
             </mat-menu>
         </mat-toolbar>
     </div>
