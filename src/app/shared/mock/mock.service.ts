@@ -8,7 +8,7 @@ export class MockService {
     products: Product[] = [
         {
             title: 'تيشيرت-كم طويل-آرت ',
-            imgUrl: '../../../assets/lastView/pic.png',
+            imgUrl: '../../../../assets/lastView/pic.png',
             isFavorite: true,
             price: 90,
             rating: 2,
@@ -16,7 +16,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت ',
-            imgUrl: '../../../assets/lastView/pic1.png',
+            imgUrl: '../../../../assets/lastView/pic1.png',
             isFavorite: false,
             price: 90,
             rating: 3,
@@ -25,7 +25,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت',
-            imgUrl: '../../../assets/lastView/pic2.png',
+            imgUrl: '../../../../assets/lastView/pic2.png',
             isFavorite: true,
             price: 90,
             rating: 2,
@@ -33,7 +33,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic.png',
+            imgUrl: '../../../../assets/newProduct/pic.png',
             isFavorite: false,
             price: 90,
             rating: 1,
@@ -43,7 +43,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic1.png',
+            imgUrl: '../../../../assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 3,
@@ -51,7 +51,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic2.png',
+            imgUrl: '../../../../assets/newProduct/pic2.png',
             isFavorite: false,
             price: 90,
             rating: 0,
@@ -59,7 +59,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic3.png',
+            imgUrl: '../../../../assets/newProduct/pic3.png',
             isFavorite: false,
             price: 90,
             rating: 2,
@@ -67,7 +67,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic1.png',
+            imgUrl: '../../../../assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 5,
@@ -76,7 +76,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic1.png',
+            imgUrl: '../../../../assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 3,
@@ -84,7 +84,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic2.png',
+            imgUrl: '../../../../assets/newProduct/pic2.png',
             isFavorite: false,
             price: 90,
             rating: 0,
@@ -92,7 +92,7 @@ export class MockService {
         },
         {
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../assets/newProduct/pic3.png',
+            imgUrl: '../../../../assets/newProduct/pic3.png',
             isFavorite: false,
             price: 90,
             rating: 2,
