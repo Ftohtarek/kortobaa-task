@@ -47,7 +47,7 @@ export class CaptionSliderComponent implements OnInit {
     this.autoSlideTimer = setInterval(() => {
       this.next()
       this.direction = 'right'
-    }, 800 * 10)
+    }, 1000 * 10)
   }
 
     /**

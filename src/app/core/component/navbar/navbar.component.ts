@@ -8,6 +8,7 @@ import { CdkLayoutService } from 'src/app/shared/service/cdk-layout.service';
 })
 export class NavbarComponent implements OnInit {
   // propery require to handle sidebar apperance
+  
   smallSize?: boolean;
   openSideBar: boolean = false;
   waiting: boolean = true

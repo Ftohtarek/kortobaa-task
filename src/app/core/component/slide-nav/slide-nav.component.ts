@@ -11,17 +11,27 @@ export class SlideNavComponent {
   @Input('open') open: boolean = false
   @Output('sideState') state = new EventEmitter()
   @ViewChild('slideBar') slideBar?: ElementRef
+
   constructor() {
-  
+
   }
 
   scope(event: MouseEvent) {
-    const target: HTMLElement = <HTMLElement>event.target;    
+    const target: HTMLElement = <HTMLElement>event.target;
     const clickedInside = this.slideBar?.nativeElement.contains(target);
     if (!clickedInside) {
       this.close()
     }
+    console.log(target);
+    
+    if (target.classList.contains('linkScope')) {
+      console.log('yes');
+      this.close()
+      
+    }
   }
+
+
 
   close() {
     this.open = false

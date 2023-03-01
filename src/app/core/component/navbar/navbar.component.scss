@@ -76,12 +76,16 @@ div[searchNavPlace] {
         }
 
         .cart {
-            @include iconButton();
             height: 100%;
-            background-color: $bgColor;
-            font-size: $fontSizeBodyText;
             margin-right: 5px;
             padding-left: 16px;
+            button{
+                height: 100%;
+                @include iconButton();
+                background-color: $bgColor;
+                font-size: $fontSizeBodyText;
+                color: $primaryColor
+            }
 
             mat-icon {
                 @include verticalCenter();

@@ -17,18 +17,20 @@
                     <input name="searchText" placeholder="عم تبحث">
                 </div>
 
-                <button class="person-icon skeleton" >
+                <button class="person-icon skeleton">
                     <mat-icon>person</mat-icon>
                 </button>
 
-                <div class="cart skeleton" >
-                    <ng-container *ngIf="!smallSize">
-                        <p>سلة التسوق</p>
-                        <mat-icon>shopping_cart</mat-icon>
-                    </ng-container>
-                    <ng-container *ngIf="smallSize">
-                        <mat-icon>shopping_cart</mat-icon>
-                    </ng-container>
+                <div class="cart skeleton">
+                    <button routerLink="/shop/cart" routerLinkActive="active-navItem">
+                        <ng-container *ngIf="!smallSize">
+                            <p>سلة التسوق</p>
+                            <mat-icon>shopping_cart</mat-icon>
+                        </ng-container>
+                        <ng-container *ngIf="smallSize">
+                            <mat-icon>shopping_cart</mat-icon>
+                        </ng-container>
+                    </button>
                 </div>
 
             </mat-toolbar>
@@ -38,7 +40,7 @@
     <!-- second nav that contain nav item and catergories -->
     <div id="items-nav">
         <div class="container" *ngIf="smallSize">
-            <button class="skeleton" menuBtn (click)="openSideBarFn()">
+            <button class="skeleton skeleton_toggle" menuBtn (click)="openSideBarFn()">
                 <mat-icon>menu</mat-icon>
             </button>
         </div>
@@ -52,26 +54,33 @@
             </li>
 
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="/" routerLinkActive="active-navItem"  mat-button>الرئيسة</a>
+                <a class="item-link" routerLink="home" routerLinkActive="active-navItem" mat-button>الرئيسة</a>
             </li>
 
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="" mat-button>قائمة الأمنيات</a>
+                <a class="item-link" routerLink="/support/hoppies" routerLinkActive="active-navItem" mat-button>قائمة الأمنيات</a>
             </li>
+
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="" mat-button>تواصل معنا</a>
+                <a class="item-link" routerLink="/support/contactUs" routerLinkActive="active-navItem" mat-button>تواصل معنا</a>
             </li>
+
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="" mat-button>من نحن</a>
+                <a class="item-link" routerLink="/support/blog" routerLinkActive="active-navItem" mat-button>من نحن</a>
             </li>
 
             <mat-menu #menu="matMenu" yPosition="below">
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الاول </button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الثاني</button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الثالث</button>
-                <button class="menuItem" mat-menu-item routerLinkActive="activeLink" routerLink="">القسم الرابع </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="active-navItem"
+                    routerLink="/department/1">القسم الاول </button>
+                <button class="menuItem" mat-menu-item routerLinkActive="active-navItem"
+                    routerLink="/department/2">القسم الثاني</button>
+                <button class="menuItem" mat-menu-item routerLinkActive="active-navItem"
+                    routerLink="/department/3">القسم الثالث</button>
+                <button class="menuItem" mat-menu-item routerLinkActive="active-navItem"
+                    routerLink="/department/4">القسم الرابع </button>
             </mat-menu>
         </mat-toolbar>
+
     </div>
 
 
