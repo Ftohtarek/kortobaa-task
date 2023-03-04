@@ -36,32 +36,28 @@ export const slideInOutAnimation = trigger('slideInOut', [
 ]);
 
 export const swapAnimation = trigger('swap', [
-  state('in', style({
-    'opacity': '1', 'display': 'block', 'transform': 'scale3d(1,1,1)'
-  })),
-  state('out', style({
-    'opacity': '0', 'display': 'none', 'transform': 'scale3d(0.1, 0.1, 0.1)'
-  })),
-
-  transition('in => out', [
+  transition(':enter', [
+    style({
+      'opacity': '0', 'transform': 'scale3d(0.1, 0.1, 0.1)'
+    }),
     group([
       animate('1000ms ease-in-out', style({
-        'transform': ' scale3d(0.1, 0.1, 0.1)'
+        'transform': ' scale3d(1,1, 1)'
       })),
-      animate('1000ms ease-in-out', style({
-        'opacity': '0', 'display': 'none'
+      animate('1500ms ease-in-out', style({
+        'opacity': '1', 'display': 'block'
       })),
     ]
     )]),
 
-  transition('out => in', [
-    style({ 'display': 'block' }),
+  transition(':leave', [
+    style({ 'opacity': '1', 'display': 'block', 'transform': 'scale3d(1,1,1)' }),
     group([
-      animate('500ms ease-in-out', style({
-        'opacity': '1'
+      animate('250ms ease-in-out', style({
+        'opacity': '0'
       })),
-      animate('800ms ease-in-out', style({
-        'transform': 'scale3d(1,1,1)'
+      animate('500ms ease-in-out', style({
+        'transform': 'scale3d(.1,.1,.1)'
       })
       ),
     ])

@@ -1,21 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'caption-slider',
-  templateUrl: './caption-slider.component.html',
-  styleUrls: ['./caption-slider.component.scss']
+  selector: 'slider',
+  templateUrl: './slider.component.html',
+  styleUrls: ['./slider.component.scss']
 })
-export class CaptionSliderComponent implements OnInit {
+export class SliderComponent implements OnInit {
   @Input('imgList') imgList: string[] = []
-
+  constructor() { }
   index: number = 0
   nextIndex: number = 1
   direction = 'right';
   swap: boolean = false;
   autoSlideTimer: any;
-  ngOnInit(): void {
-    this.autoSlide()
-  }
+  ngOnInit(): void { this.autoSlide() }
 
   next() {
     this.checkSwap('left')
@@ -26,6 +24,7 @@ export class CaptionSliderComponent implements OnInit {
       this.imgList.length - 1 == this.nextIndex ? this.nextIndex = 0 : this.nextIndex += 1
     })
 
+    this.restartAutoSlide()
   }
 
   pervious() {
@@ -37,23 +36,22 @@ export class CaptionSliderComponent implements OnInit {
       this.nextIndex == 0 ? this.nextIndex = this.imgList.length - 1 : this.nextIndex -= 1
     })
 
+    this.restartAutoSlide()
   }
 
   /**
-   *@implementaion resbonse to generater slide action in specific time
+   *@implementaion resbonse to generater slide action in specific time with Last Direction clickable
    */
-
-  autoSlide() {
+  private autoSlide(duration = 10000) {
     this.autoSlideTimer = setInterval(() => {
-      this.next()
-      this.direction = 'right'
-    }, 1000 * 10)
+      this.direction == 'right' ? this.next() : this.pervious()
+    }, duration)
   }
 
-    /**
-   *@implementaion clear old auto slide and genenrate new one
-   */
-  restartAutoSlide() {
+  /**
+ *@implementaion clear old auto slide and genenrate new one.
+ */
+  private restartAutoSlide() {
     clearInterval(this.autoSlideTimer)
     this.autoSlide()
   }
@@ -63,7 +61,7 @@ export class CaptionSliderComponent implements OnInit {
    * @implements  Wait for 10ms:to ensure that the current position is stable.
    * @summary Waiting for 10ms before changing position is crucial to ensure that the direction is correct.
   */
-  waiting(changePosition = () => { }) {
+  private waiting(changePosition = () => { }) {
     setTimeout(() => {
       if (!this.swap) {
         //code impelement here ...... !
@@ -81,11 +79,10 @@ export class CaptionSliderComponent implements OnInit {
    * 
    * @param initialDirection parameter used to detect the direction that you want to check reverse To swap on it in the function
    */
-  checkSwap(initialDirection: string) {
+  private checkSwap(initialDirection: string) {
     this.swap = this.direction == initialDirection ? true : false
     this.direction = '';
 
-    this.restartAutoSlide()
   }
 
 

@@ -3,7 +3,7 @@
 .card {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    width: 240px;
+    width: 235px;
     height: 390px;
     overflow: hidden;
     background-color: $groundColor;
@@ -90,9 +90,10 @@
     height: 121px;
     width: 260px;
 
-    h4{
+    h4 {
         font-size: 13px !important;
     }
+
     * {
         font-size: $fontSizeCaption;
     }
@@ -114,23 +115,29 @@
     }
 }
 
-@media only screen and (max-width: 1099px) {
-
+@media screen and (min-width:1135px) {
     .lastView {
-        width: 245px;
+        width: 300px !important;
+    }
 
+    h4 {
+        font-size: $fontSizeBodyText !important;
     }
+}
+
+@media screen and (max-width: 768px) {
     .card {
         width: 220px;
     }
-}
-@media only screen and (max-width: 1015px ) and (min-width: 900px ){
-    .card {
-        width: 220px;
+
+    h4 {
+        font-size: $fontSizeBodyText !important;
     }
 }
-@media only screen and (max-width: 768px ){
-    h4{
-        font-size: $fontSizeBodyText !important; 
+
+@media screen and (max-width: 425px) {
+    .card {
+        width: 210px;
+
     }
 }

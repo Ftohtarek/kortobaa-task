@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { MockService } from 'src/app/shared/mock/mock.service';
-import { Product, Products } from 'src/app/shared/models/product';
+import { filter, first, pluck, Subscription, switchMap, tap } from 'rxjs';
+import { IAppStore } from 'src/app/AppStore/app-store.interface';
+import { Product } from 'src/app/shared/models/product.interface';
 import { CdkLayoutService } from 'src/app/shared/service/cdk-layout.service';
 import { swapAnimation } from '../animate/animate-triger';
+import { Store } from '@ngrx/store'
+import { skeletonLastView, skeletonProducts } from 'src/app/AppStore/app-skeleton-data';
+import { Products } from 'src/app/shared/models/products';
 
 @Component({
   selector: 'home',
@@ -12,77 +15,138 @@ import { swapAnimation } from '../animate/animate-triger';
   styleUrls: ['./home.component.scss'],
   animations: [swapAnimation]
 })
-export class HomeComponent implements OnInit {
-  smallSize?: boolean;
-  waiting: boolean = true;
-  /* fake data to loop throw product to build skeleton design  */
-  products: Product[] = <any>[{ isViewBefor: true }, { isViewBefor: true }, { isViewBefor: true }, 1, 2, 3]
+/**
+ * Component for the home page.
+ */
+export class HomeComponent implements OnInit, OnDestroy {
+  /**
+   * object Represent Products Model
+   */
+  products: Products = <Products>{}
 
-  activeCategory: any;
-
-  // resbonse on slider caption animation 
-  slide = false;
-  direction = 'inital'
-  timeOut: any;
-
-  /*Slider Image list  */
+  /**
+   * The list of products that view in grid .
+   */
+  productList: Product[] = <Product[]>[]
+  /**
+   * The list of background images.
+   */
   bgImgList: string[] = []
-  index: number = 0
+
+  /**
+   * The active category of products.
+   */
+  activeCategory: keyof Products = 'new';
+
+  /**
+   * Indicates if the component is currently loading.
+   */
+  isLoading: boolean = true;
+
+  /**
+   * Indicates if the component is in tablet mode.
+   */
+  isTabletMode?: boolean;
+  // component subscription
+  storeSubscription?: Subscription;
+  tabletNavigatorSubscription?: Subscription;
+
   constructor(
-    private mockDate: MockService,
     private layout: CdkLayoutService,
     private router: ActivatedRoute,
-    private route: Router
+    private route: Router,
+    private store: Store<{ AppStore: IAppStore }>
   ) { }
 
-  /*on component init trace the url query and call cdkLayout 
-  Service that resbonse on handling of responsive of application  */
+  /**
+   * Initializes the component.
+   * Simulate server response delay
+   * @returns void
+   */
   ngOnInit(): void {
-    
-    /* this sould be responce from serve */
+    // Simulate server response delay
     setTimeout(() => {
-      this.waiting=false
-      this.products = new Products(this.mockDate.products).products
-      this.bgImgList = this.mockDate.bgImages
+      this.initializeData()
     }, 4000);
-    
-    this.layout.isSmallMode.pipe(
-      switchMap(isTabletMode => {
-        this.smallSize = isTabletMode
-        return this.router.queryParamMap
-      }))
-      .subscribe(param => this.setCategoryNavigator(param.get('category')))
+    this.initializeTabletMode()
+    this.setSkeletonFakeData()
   }
 
   /**
-   * @param param string value carry selected category 
-   * @summary determine which products to view, which is only activated when the application is in tablet mode. .
-   * @example setCategoryNavigator(param.get('category'))
-   * @example param:ActivatedRouteSnapshot.paramMap
+   * Initializes the data for the component.
+   * @returns void
+   * @implements  It retrieves the products and background images from the store
+   * determine the active category
+   */
+  private initializeData(): void {
+    this.storeSubscription = this.store.select('AppStore').subscribe(
+      appStore => {
+        this.products = new Products(appStore.products)
+        this.productList = this.products[this.activeCategory]
+        this.bgImgList = appStore.backgroundImage
+      })
+    this.isLoading = false
+    this.initializeTabletMode()
+
+  }
+
+  /**
+   * Initializes the tablet mode for the component.
+   * and sets up the category navigator based on the query parameter
+   * @returns void
    */
 
-  private setCategoryNavigator(param: string | null) {
-    this.activeCategory = param
+  private initializeTabletMode(): void {
+    this.tabletNavigatorSubscription = this.layout.isSmallMode.pipe(
+      tap(isTabletMode => this.isTabletMode = isTabletMode),
+      switchMap(() => this.router.queryParamMap)).
+      subscribe(param => this.setCategoryNavigator(<keyof Products>param.get('category')))
+  }
 
-    this.smallSize ?
-      !this.activeCategory ? this.route.navigate(['/'], { queryParams: { 'category': 'new' } }) : null :
+  /**
+   * Sets the active category of products based on the given parameter.
+   * If the component is in tablet mode and no parameter is given, it will navigate to the default category.
+   * @param {keyof Products} param The category parameter.
+   * @returns void
+   */
+  private setCategoryNavigator(param: keyof Products): void {
+    if (!this.isTabletMode)
       this.route.navigate(['/'])
+    else if (!param)
+      this.route.navigate(['/'], { queryParams: { category: 'new' } })
 
+    this.activeCategory = param || 'new';
+    this.productList = this.products[this.activeCategory]
+   
   }
   /**
-   * @param direction string input indicate the direction of animation (right,left)
-   * @implements this method has Trick that after 600ms it set slide propery to true to 
-   * return the state in animation trigger to initial state
-   */
+   * Sets the fake skeleton data for products.
+   * @memberof Home
+   * @returns {void}
+ */
 
-  bgCaptionImg(direction: string) {
-    this.direction = direction
-    this.slide = false
+  setSkeletonFakeData() {
+    this.productList = skeletonProducts
+    this.products.lastView = skeletonLastView
+  }
 
-    // // to make change in state of animation sensor
-    this.timeOut = setTimeout(() => {
-      // this mean return to initial state 
-      this.slide = true
-    }, 600);
+  /**
+ * used for tracking changes in an *ngFor loop with the trackBy directive.
+ * 
+ * @param index - The index of the current product in the array
+ * @param product - The product item to generate a unique identifier for
+ * @returns A unique identifier for the product based on its ID
+ */
+
+  trackByProductId(index: number, product: Product): number {    
+    return product.id;
+  }
+  /* clean subscription  */
+  ngOnDestroy(): void {
+    this.storeSubscription?.unsubscribe()
+    this.tabletNavigatorSubscription?.unsubscribe()
   }
 }
+
+
+

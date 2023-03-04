@@ -1,9 +1,10 @@
-<nav [class.active-skeleton]="waiting">
+<nav [class.active-skeleton]="waiting" >
     <!-- main nav that contain search input field -->
     <div searchNavPlace>
         <div id="search-nav" [ngClass]="{'navbar-hidden': !navbarToggle, 'navbar-visible': navbarToggle}"
             (window:scroll)="onWindowScroll()" [style.box-shadow]="scrollTop>40?'0px 5px 18px -5px rgba(0,0,0,.1)':''">
             <mat-toolbar class="container">
+                
                 <header>
                     <button routerLink="home">
                         <img src="../../../../assets/logo/logo.png" alt="">

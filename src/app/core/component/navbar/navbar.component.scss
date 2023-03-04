@@ -30,11 +30,13 @@ div[searchNavPlace] {
         }
 
         .search-container {
+            @include verticalCenter();
+            flex-wrap: nowrap;
             flex-grow: 1;
             border-radius: 10px;
             height: 100%;
             background-color: $bgColor ;
-            @include verticalCenter();
+
 
             input {
                 border: none;
@@ -62,7 +64,6 @@ div[searchNavPlace] {
                 }
             }
         }
-
 
         .person-icon {
             @include iconButton();
@@ -110,6 +111,8 @@ div[searchNavPlace] {
         @include iconButton();
         background-color: $primaryColor;
         padding: 5px 11px;
+        margin-right: 5px;
+        
         *{
             color: #fff;
             font-size: $fontSizeTitle;

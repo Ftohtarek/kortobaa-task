@@ -1,81 +1,61 @@
 @import '../../../../styles.scss';
-
-@mixin productListGrid() {
-    @include verticalCenter();
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    flex-grow: 1;
+@mixin gridLayout() {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
 }
 
-.caption {
+div[slider] {
     height: 50vh;
-    width: 100%;
-    overflow: hidden;
 }
 
-section[productList] {
-    overflow: hidden;
+div[categories] {
+    @include gridLayout();
+    min-height: 60px;
+    font-size: $fontSizeBodyText;
 
-    .container {
-        @include verticalCenter();
-        align-items: flex-start;
-        flex-wrap: nowrap;
-        justify-content: center;
-        gap: 2px;
+    .lastView {
+        grid-column: 1/3;
+        min-width: 260px;
+        margin: auto;
     }
 
-    div[newProduct] {
-        @include productListGrid();
+    .new {
+        grid-column: 3/9;
+        margin: auto 0;
+
+        div[divider] {
+            @include verticalCenter();
+            justify-content: space-between;
+            gap: 10px;
+
+            P {
+                @include stripper();
+            }
+
+            span[dividerLine] {
+                height: 1px;
+                flex-grow: 1;
+                background-color: $dividerGray;
+            }
+
+            button {
+                font-size: $fontSizeBodyText;
+                color: $primaryColor;
+                border-color: $primaryColor;
+            }
+        }
+
     }
 
-    div[lastView] {
-        @include verticalCenter();
-        flex-wrap: wrap;
-        width: fit-content;
-        max-width: 300px;
-        justify-content: center;
-        gap: 12px;
-
-    }
-
-    div[divider] {
-        margin: 25px auto;
-        height: 35px;
-        width: 100%;
-        @include verticalCenter();
-        justify-content: space-between;
-
-        &.lasView {
-            justify-content: center;
-        }
-
-        P {
-            @include stripper();
-            font-size: $fontSizeBodyText;
-        }
-
-        span[dividerLine] {
-            height: 1px;
-            flex-grow: 1;
-            margin: auto 10px;
-            background-color: $dividerGray;
-        }
-
-        button {
-            font-size: $fontSizeBodyText;
-            color: $primaryColor;
-            border-color: $primaryColor;
-        }
-    }
-
-    div[chip] {
-        margin: 25px auto;
-        height: 35px;
+    .chip {
+        grid-column: 1/9;
+        margin: auto;
 
         @include verticalCenter();
         justify-content: center;
-        gap: 5px;
+        gap: 10px;
 
         button {
             @include iconButton();
@@ -87,26 +67,42 @@ section[productList] {
         }
     }
 
-    .active-chip {
-        background-color: tomato;
-        color: white;
-    }
 }
 
-div[swap] {
-    @include productListGrid();
-}
-
-@media only screen and (max-width: 1015px) and (min-width: 900px) {
-    div[lastView] {
-        max-width: 250px !important;
+div[product-view] {
+    @include gridLayout();
+    .lastView {
+        grid-column: 1/3;
+        // min-width: 260px;
+        @include verticalCenter();
+        align-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
+    .new {
+        grid-column: 3 /9;
+        @include verticalCenter();
+        align-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+    }
 
 }
 
-@media screen  and (max-width: 1199px) {
-    div[divider]{
-        width: 75% !important;
+@media screen and (max-width:1024px) {
+    div[product-view] {    
+        grid-template-columns: minmax(260px, 1fr)9fr !important;
+    
+}
+}
+
+@media screen and (max-width:768px) {
+    div[product-view] {
+        .new {
+            grid-column: 1/9;
+            gap: 5px !important;
+        }
     }
 }

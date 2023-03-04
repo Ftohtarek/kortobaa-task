@@ -1,6 +1,5 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { Product } from '../../models/product';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from '../../models/product.interface';
 
 // init Swiper:
 @Component({
@@ -9,13 +8,12 @@ import { Product } from '../../models/product';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  constructor(private render: Renderer2) { }
+  constructor() { }
   @Input('product') product: Product = <Product>{};
   @Input('smallCard') isSmallCard: boolean = false
   productImgUrl: string = ''
-  ngOnInit(): void {
-    this.product.discountPersantage
-  }
+
+  ngOnInit(): void {}
 
 
 }

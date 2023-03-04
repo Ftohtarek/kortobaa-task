@@ -1,14 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { PersisitCache } from '../AppStore/persisit-cache';
 import { CardComponent } from './component/card/card.component';
 import { ProductShoppingActionComponent } from './component/product-shopping-action/product-shopping-action.component';
 import { RatingComponent } from './component/rating/rating.component';
 import { MaterialModule } from './material.module';
 import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
-
-
 
 @NgModule({
   declarations: [
@@ -22,6 +20,7 @@ import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
     CommonModule,
     MaterialModule,
     BrowserAnimationsModule,
+
   ],
   exports: [
     CardComponent,
@@ -29,4 +28,8 @@ import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
     MaterialModule,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor(private persisitCach: PersisitCache) {
+    this.persisitCach.traceState()
+  }
+}

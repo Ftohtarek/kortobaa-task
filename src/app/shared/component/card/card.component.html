@@ -20,11 +20,10 @@
     <div class="card-body">
 
         <!-- title -->
-
         <h4 class="product-title skeleton" [ngClass]="!isSmallCard ? 'skeleton-card__text':'skeleton-small_card__text'">
             تيشرت-شتوي-3-خصم</h4>
         <!-- rateing -->
-        <rating *ngIf="!isSmallCard" [rate]="product.rating"></rating>
+        <rating *ngIf="!isSmallCard" [product]="product"></rating>
         <!-- price  -->
         <div class="price skeleton skeleton-card__text" >
             <div [style.text-decoration]="product.discountPersantage?'line-through':'none'" class="fixed-price">
@@ -35,7 +34,7 @@
 
         <!-- add shopping to card  -->
         <product-shopping-action class="skeleton" [ngClass]="isSmallCard ? 'skeleton-small_card__footer':'skeleton-card__footer'"
-            [isFavorite]="product.isFavorite" [isLastView]="isSmallCard"></product-shopping-action>
+            [product]="product" [isSmallCard]="isSmallCard"></product-shopping-action>
 
     </div>
 
