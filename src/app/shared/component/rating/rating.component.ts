@@ -26,6 +26,7 @@ export class RatingComponent implements AfterViewInit {
     );
     this.changeRating(index)
   }
+
   changeRating(rate: number) {
     this.store.dispatch(changeRating({ productId: this.product.id, rate: rate }))
   }

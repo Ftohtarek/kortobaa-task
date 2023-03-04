@@ -12,12 +12,10 @@ export class ProductShoppingActionComponent {
   @Input('product') product: Product = <Product>{};
   @Input('isAdd') isAdd: boolean = false;
   @Input('isSmallCard') isSmallCard: boolean = false;
-
   constructor(private store: Store<{ AppStore: IAppStore }>) { }
 
   addToCart() {
     this.isAdd = true
-    // should call cart service and send request that add product
   }
 
   isFavoriteAction() {

@@ -1,4 +1,5 @@
 @import '../../../../styles.scss';
+
 @mixin gridLayout() {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -12,6 +13,7 @@ div[slider] {
 
 div[categories] {
     @include gridLayout();
+    margin-left: 5px;
     min-height: 60px;
     font-size: $fontSizeBodyText;
 
@@ -24,7 +26,6 @@ div[categories] {
     .new {
         grid-column: 3/9;
         margin: auto 0;
-
         div[divider] {
             @include verticalCenter();
             justify-content: space-between;
@@ -71,9 +72,9 @@ div[categories] {
 
 div[product-view] {
     @include gridLayout();
+
     .lastView {
         grid-column: 1/3;
-        // min-width: 260px;
         @include verticalCenter();
         align-content: flex-start;
         flex-wrap: wrap;
@@ -92,10 +93,10 @@ div[product-view] {
 }
 
 @media screen and (max-width:1024px) {
-    div[product-view] {    
+    div[product-view] {
         grid-template-columns: minmax(260px, 1fr)9fr !important;
-    
-}
+
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -104,5 +105,24 @@ div[product-view] {
             grid-column: 1/9;
             gap: 5px !important;
         }
+    }
+
+    div[slider] {
+        height: 30vh !important;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .chip {
+        gap: 5px !important;
+
+        button {
+            padding: 4px 10px !important;
+            font-size: 12px !important;
+        }
+    }
+
+    div[slider] {
+        height: 20vh !important;
     }
 }

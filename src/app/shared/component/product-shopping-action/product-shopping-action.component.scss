@@ -83,3 +83,20 @@
         font-size: 10pt !important;
     }
 }
+
+@media only screen and (max-width: 450px) {
+    .shopping {
+        flex-direction: column-reverse;
+        gap: 4px;
+        *{
+            width: 100%;
+        }
+        button[addToShoppingCart]{
+            justify-content: space-around;
+            flex-direction: row-reverse;
+            *{
+                width: fit-content;
+            }           
+        }
+    }
+}

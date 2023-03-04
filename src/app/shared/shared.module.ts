@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PersisitCache } from '../AppStore/persisit-cache';
 import { CardComponent } from './component/card/card.component';
 import { ProductShoppingActionComponent } from './component/product-shopping-action/product-shopping-action.component';
 import { RatingComponent } from './component/rating/rating.component';
@@ -29,7 +28,5 @@ import { EgyCurrencyPipe } from './pipe/egy-currency.pipe';
   ]
 })
 export class SharedModule {
-  constructor(private persisitCach: PersisitCache) {
-    this.persisitCach.traceState()
-  }
+
 }

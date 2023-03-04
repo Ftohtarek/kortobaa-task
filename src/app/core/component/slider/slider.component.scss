@@ -18,6 +18,8 @@ section {
     width: 100%;
     background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
+
 }
 
 
@@ -75,4 +77,13 @@ section {
 .backInRight {
     @include inAnimation();
     animation-name: backInRight;
+}
+
+@media screen and (max-width:425px) {
+
+    .icon {
+        button {
+            padding:8px 2px !important;
+        }
+    }
 }

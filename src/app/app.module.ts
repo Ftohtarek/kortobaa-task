@@ -7,6 +7,7 @@ import { CoreModule } from "./core/core.module";
 
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './AppStore/app-reducer';
+import { PersisitCache } from './AppStore/persisit-cache';
 
 @NgModule({
     declarations: [
@@ -17,10 +18,14 @@ import { productReducer } from './AppStore/app-reducer';
         AppRoutingModule,
         CoreModule,
         StoreModule.forRoot({ AppStore: productReducer }),
-        
+
     ],
     providers: [],
     bootstrap: [AppComponent],
 
 })
-export class AppModule {}
+export class AppModule {
+    constructor(private persisitCach: PersisitCache) {
+        this.persisitCach.traceState()
+    }
+}

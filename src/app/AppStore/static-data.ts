@@ -5,7 +5,7 @@ export const StaticData:IAppStore = {
         {
             id:1,
             title: 'تيشيرت-كم طويل-آرت ',
-            imgUrl: '../../../../assets/lastView/pic.png',
+            imgUrl: './assets/lastView/pic.png',
             isFavorite: true,
             price: 90,
             rating: 2,
@@ -14,7 +14,7 @@ export const StaticData:IAppStore = {
         {
             id:2,
             title: 'تيشيرت-كم طويل-آرت ',
-            imgUrl: '../../../../assets/lastView/pic1.png',
+            imgUrl: './assets/lastView/pic1.png',
             isFavorite: false,
             price: 90,
             rating: 3,
@@ -24,7 +24,7 @@ export const StaticData:IAppStore = {
         {
             id:3,
             title: 'تيشيرت-كم طويل-آرت',
-            imgUrl: '../../../../assets/lastView/pic2.png',
+            imgUrl: './assets/lastView/pic2.png',
             isFavorite: true,
             price: 90,
             rating: 2,
@@ -33,7 +33,7 @@ export const StaticData:IAppStore = {
         {
             id:4,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic.png',
+            imgUrl: './assets/newProduct/pic.png',
             isFavorite: false,
             price: 90,
             rating: 1,
@@ -44,7 +44,7 @@ export const StaticData:IAppStore = {
         {
             id:5,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic1.png',
+            imgUrl: './assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 3,
@@ -53,7 +53,7 @@ export const StaticData:IAppStore = {
         {
             id:6,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic2.png',
+            imgUrl: './assets/newProduct/pic2.png',
             isFavorite: false,
             price: 90,
             rating: 0,
@@ -62,7 +62,7 @@ export const StaticData:IAppStore = {
         {
             id:7,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic3.png',
+            imgUrl: './assets/newProduct/pic3.png',
             isFavorite: false,
             price: 90,
             rating: 2,
@@ -71,7 +71,7 @@ export const StaticData:IAppStore = {
         {
             id:8,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic1.png',
+            imgUrl: './assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 5,
@@ -81,7 +81,7 @@ export const StaticData:IAppStore = {
         {
             id:9,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic1.png',
+            imgUrl: './assets/newProduct/pic1.png',
             isFavorite: true,
             price: 90,
             rating: 3,
@@ -90,7 +90,7 @@ export const StaticData:IAppStore = {
         {
             id:10,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic2.png',
+            imgUrl: './assets/newProduct/pic2.png',
             isFavorite: false,
             price: 90,
             rating: 0,
@@ -99,7 +99,7 @@ export const StaticData:IAppStore = {
         {
             id:11,
             title: 'تيشيرت-كم طويل-آرت وير-نسائي-ملابس',
-            imgUrl: '../../../../assets/newProduct/pic3.png',
+            imgUrl: './assets/newProduct/pic3.png',
             isFavorite: false,
             price: 90,
             rating: 2,
@@ -109,10 +109,10 @@ export const StaticData:IAppStore = {
     ],
 
     backgroundImage:[
-        '../../../../assets/bgImg/background-image.png',
-        '../../../../assets/bgImg/background-image.png',
-        '../../../../assets/bgImg/background-image.png',
-        '../../../../assets/bgImg/background-image.png',
+        './assets/bgImg/background-image.png',
+        './assets/bgImg/background-image.png',
+        './assets/bgImg/background-image.png',
+        './assets/bgImg/background-image.png',
 
     ]
     ,cart:{}

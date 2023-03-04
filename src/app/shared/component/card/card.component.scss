@@ -135,9 +135,21 @@
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 450px) {
     .card {
-        width: 210px;
+        width: 180px;
 
+        .card-image {
+            height: 50% !important;
+        }
+
+        .card-body {
+            height: 50% !important;
+        }
+
+        * {
+
+            font-size: 12px !important;
+        }
     }
 }
