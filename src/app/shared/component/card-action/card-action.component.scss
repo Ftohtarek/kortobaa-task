@@ -59,6 +59,10 @@
 }
 
 .lastView {
+    mat-icon {
+        font-size: 18px !important;
+    }
+
     button[addToShoppingCart] {
         @include iconButton();
         padding: 0;
@@ -68,15 +72,15 @@
             margin: 0;
         }
 
-        &:disabled {
-            background-color: transparent;
-
-            mat-icon {
-                color: $seconderyColor;
-            }
-        }
     }
+
 }
+
+product-quantity {
+    min-width: 55%;
+
+}
+
 
 @media only screen and (max-width: 768px) {
     button[addToShoppingCart] {
@@ -88,15 +92,18 @@
     .shopping {
         flex-direction: column-reverse;
         gap: 4px;
-        *{
+
+        * {
             width: 100%;
         }
-        button[addToShoppingCart]{
+
+        button[addToShoppingCart] {
             justify-content: space-around;
             flex-direction: row-reverse;
-            *{
+
+            * {
                 width: fit-content;
-            }           
+            }
         }
     }
 }

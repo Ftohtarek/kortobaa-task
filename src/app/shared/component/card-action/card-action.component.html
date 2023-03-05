@@ -1,19 +1,17 @@
 <div class="shopping" [class.lastView]="isSmallCard">
-    <button addToShoppingCart (click)="addToCart()" [disabled]="isAdd">
+    <button [@roll] addToShoppingCart (click)="addToCart()" *ngIf="!inCart">
         <!-- if product is add to cart  -->
-        <ng-container *ngIf="isAdd">
-            <mat-icon>add_reaction_outline</mat-icon>
-            <span *ngIf="!isSmallCard">تم الاضافه </span>
-        </ng-container>
-        <!-- if product not exist in cart -->
-        <ng-container *ngIf="!isAdd">
+        <ng-container>
             <mat-icon>add_shopping_cart</mat-icon>
             <span *ngIf="!isSmallCard">اضف الي السلة</span>
         </ng-container>
 
     </button>
 
-    <div product-action >
+    <product-quantity [@roll] *ngIf="inCart" [productQuantity]="inCart" [isSmallCard]="isSmallCard"
+        [productId]="product.id"></product-quantity>
+
+    <div product-action>
         <button>
             <mat-icon share>share</mat-icon>
         </button>

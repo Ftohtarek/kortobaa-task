@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from "./core/core.module";
 
 import { StoreModule } from '@ngrx/store';
-import { productReducer } from './AppStore/app-reducer';
+import { appReducer } from './AppStore/app-reducer';
 import { PersisitCache } from './AppStore/persisit-cache';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { PersisitCache } from './AppStore/persisit-cache';
         BrowserModule,
         AppRoutingModule,
         CoreModule,
-        StoreModule.forRoot({ AppStore: productReducer }),
+        StoreModule.forRoot({ AppStore: appReducer }),
 
     ],
     providers: [],

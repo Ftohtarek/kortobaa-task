@@ -1,4 +1,4 @@
-import { animate, group, state, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, group, query, state, style, transition, trigger } from '@angular/animations';
 
 export const slideInOutAnimation = trigger('slideInOut', [
   state('in', style({
@@ -65,4 +65,38 @@ export const swapAnimation = trigger('swap', [
   )
 ]);
 
+export const rollAnimation = trigger('roll', [
+  state('void', style({
+    'opacity': '0',
+    'transform': 'translate3d(10%, 0, 0) rotate3d(0, 0, 1, 120deg)'
+  })),
+  state('*', style({
+    'opacity': '1',
+    'transform': 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)'
+  })),
 
+  transition(':enter', [
+    style({ 'position':'absolute'}),
+    group([
+      animate('1ms ease-in-out', style({
+        'position':'static'
+      })),
+      animate('300ms ease-in-out', style({
+        'opacity': '1',
+        'transform': 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)'
+      })),
+    ], { delay: '500ms' }),
+  ]),
+
+  transition(':leave', [
+    group([
+      animate('500ms ease-in-out', style({
+        'opacity': '0',
+        'transform': 'translate3d(10%, 0, 0) rotate3d(0, 0, 1, 120deg)'
+      })),
+      animate('500ms ease-in-out', style({
+        'display': 'none'
+      })),
+    ]),
+  ]),
+]);
