@@ -98,6 +98,13 @@ div[searchNavPlace] {
                 padding: 0px 10px !important;
                 font-size: $fontSizeBodyText;
             }
+            .quantity{
+                @include iconButton();
+                height: 80%;
+                background-color: rgb(240, 237, 77);
+                font-size: 12px;
+                font-weight: 700 !important;
+            }
         }
     }
 }

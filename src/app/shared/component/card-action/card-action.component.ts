@@ -6,6 +6,7 @@ import { rollAnimation, swapAnimation } from 'src/app/core/component/animate/ani
 import { CartModel } from '../../models/cart';
 import { CartItem } from '../../models/cart-item';
 import { Product } from '../../models/product.interface';
+import { CartService } from '../../service/cart.service';
 @Component({
   selector: 'card-action',
   templateUrl: './card-action.component.html',
@@ -17,24 +18,27 @@ export class CardAction {
   @Input('isSmallCard') isSmallCard: boolean = false;
   cart: CartModel = <CartModel>{}
 
-  inCart: number=0
+  inCart: number = 0
 
 
-  constructor(private store: Store<{ AppStore: IAppStore }>) {
+  constructor(private cartService: CartService, private store: Store<{ AppStore: IAppStore }>) {
+    this.cartService.cart$.subscribe(store => {
+      this.cart = store
+      this.inCart = this.cart.getProductQuantity(this.product)
+    })
+
     store.select('AppStore').subscribe(store => {
       this.cart = new CartModel(store.cart.items)
-      console.log('quantity:' ,this.cart.getProductQuantity(this.product));      
-      this.inCart = this.cart.getProductQuantity(this.product)
-            
+
     })
   }
 
   addToCart() {
-    this.store.dispatch(addToCart({ cartItem: new CartItem(this.product, 1) }))
+    this.cartService.addToCart(this.product)
   }
 
   isFavoriteAction() {
-    this.store.dispatch(isFavoriteToggle({ productId: this.product.id }))
+    this.cartService.isFavoriteAction(this.product.id)
   }
 
 

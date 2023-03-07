@@ -22,12 +22,9 @@ export class SlideNavComponent {
     if (!clickedInside) {
       this.close()
     }
-    console.log(target);
     
     if (target.classList.contains('linkScope')) {
-      console.log('yes');
-      this.close()
-      
+      this.close()      
     }
   }
 

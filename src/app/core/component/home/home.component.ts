@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * Indicates if the component is in tablet mode.
    */
   isTabletMode?: boolean;
+  currentPath: string = ''
   // component subscription
   storeSubscription?: Subscription;
   tabletNavigatorSubscription?: Subscription;
@@ -97,7 +98,8 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
 
   private initializeTabletMode(): void {
-    this.tabletNavigatorSubscription = this.layout.isSmallMode.pipe(
+    this.currentPath = this.router.snapshot.url[0].path
+    this.tabletNavigatorSubscription = this.layout.isTabletMode.pipe(
       tap(isTabletMode => this.isTabletMode = isTabletMode),
       switchMap(() => this.router.queryParamMap)).
       subscribe(param => this.setCategoryNavigator(<keyof Products>param.get('category')))
@@ -110,14 +112,17 @@ export class HomeComponent implements OnInit, OnDestroy {
    * @returns void
    */
   private setCategoryNavigator(param: keyof Products): void {
-    if (!this.isTabletMode)
-      this.route.navigate(['/'])
-    else if (!param)
-      this.route.navigate(['/'], { queryParams: { category: 'new' } })
 
+    if (!this.isTabletMode && this.currentPath == 'home')
+      this.route.navigate(['/'])
+    else if (!param && this.currentPath == 'home') {
+      this.route.navigate(['/'], { queryParams: { category: 'new' } })
+      // delay until reNavigate 
+      setTimeout(() => this.setSkeletonFakeData() , 10)
+    }
     this.activeCategory = param || 'new';
     this.productList = this.products[this.activeCategory]
-   
+
   }
   /**
    * Sets the fake skeleton data for products.
@@ -138,14 +143,16 @@ export class HomeComponent implements OnInit, OnDestroy {
  * @returns A unique identifier for the product based on its ID
  */
 
-  trackByProductId(index: number, product: Product): number {    
+  trackByProductId(index: number, product: Product): number {
     return product.id;
   }
   /* clean subscription  */
   ngOnDestroy(): void {
+    this.currentPath = ''    
     this.storeSubscription?.unsubscribe()
     this.tabletNavigatorSubscription?.unsubscribe()
   }
+
 }
 
 

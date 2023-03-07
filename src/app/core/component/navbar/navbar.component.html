@@ -1,10 +1,10 @@
-<nav [class.active-skeleton]="waiting" >
+<nav [class.active-skeleton]="waiting">
     <!-- main nav that contain search input field -->
     <div searchNavPlace>
         <div id="search-nav" [ngClass]="{'navbar-hidden': !navbarToggle, 'navbar-visible': navbarToggle}"
             (window:scroll)="onWindowScroll()" [style.box-shadow]="scrollTop>40?'0px 5px 18px -5px rgba(0,0,0,.1)':''">
             <mat-toolbar class="container">
-                
+
                 <header>
                     <button routerLink="home">
                         <img src="./assets/logo/logo.png" alt="">
@@ -26,9 +26,11 @@
                     <button routerLink="/shop/cart" routerLinkActive="active-navItem">
                         <ng-container *ngIf="!smallSize">
                             <p>سلة التسوق</p>
+                            <span class="quantity" *ngIf="quantity!=0">{{quantity}}</span>
                             <mat-icon>shopping_cart</mat-icon>
                         </ng-container>
                         <ng-container *ngIf="smallSize">
+                            <span class="quantity" *ngIf="quantity!=0">{{quantity}}</span>
                             <mat-icon>shopping_cart</mat-icon>
                         </ng-container>
                     </button>
@@ -59,11 +61,13 @@
             </li>
 
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="/support/hoppies" routerLinkActive="active-navItem" mat-button>قائمة الأمنيات</a>
+                <a class="item-link" routerLink="/support/hoppies" routerLinkActive="active-navItem" mat-button>قائمة
+                    الأمنيات</a>
             </li>
 
             <li class="item-list skeleton skeleton-nav_item ">
-                <a class="item-link" routerLink="/support/contactUs" routerLinkActive="active-navItem" mat-button>تواصل معنا</a>
+                <a class="item-link" routerLink="/support/contactUs" routerLinkActive="active-navItem" mat-button>تواصل
+                    معنا</a>
             </li>
 
             <li class="item-list skeleton skeleton-nav_item ">

@@ -40,14 +40,8 @@ nav[sidbarOverlay] {
         mat-menu {
             min-width: 450px;
             color: $primaryColor;
-
         }
 
-        .menuItem {
-            * {
-                background-color: red;
-            }
-        }
     }
 
 }
@@ -101,4 +95,9 @@ div[slideBar] {
         }
     }
 
+}
+@media screen and (max-width:500px) {
+    div[slideBar] {
+        max-width: 280px !important;
+    }
 }

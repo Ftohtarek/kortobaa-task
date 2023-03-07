@@ -41,3 +41,20 @@ div[shopping_cart_checkout] {
         color: $seconderyColor;
     }
 }
+
+.min-icon{
+    strong{
+        font-size: 10px ;
+    }
+    mat-icon {
+        font-size: 12px ;
+        width: 12px ;
+        height: 12px ;
+    }
+    button {
+        width: 14px ;
+        height: 14px ;
+        mat-icon {
+            @include position-center();
+        }
+    }}

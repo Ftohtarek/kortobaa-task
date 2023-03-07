@@ -1,4 +1,4 @@
-<div class="quantity" [class.small-card]="isSmallCard">
+<div class="quantity" [class.small-card]="isSmallCard" [class.min-icon]="minIcon">
     <button class="addation" mat-icon-button color="primary" (click)="addation()">
         <mat-icon>add</mat-icon>
     </button>
@@ -9,7 +9,7 @@
             shopping_cart_checkout
         </mat-icon>
     </div>
-
+    
     <button class="subtraction" mat-icon-button color="warn" (click)="subtract()">
         <mat-icon>remove</mat-icon>
     </button>

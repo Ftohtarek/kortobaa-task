@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CartModel } from 'src/app/shared/models/cart';
+import { CartService } from 'src/app/shared/service/cart.service';
 import { CdkLayoutService } from 'src/app/shared/service/cdk-layout.service';
 
 @Component({
@@ -8,7 +11,7 @@ import { CdkLayoutService } from 'src/app/shared/service/cdk-layout.service';
 })
 export class NavbarComponent implements OnInit {
   // propery require to handle sidebar apperance
-  
+
   smallSize?: boolean;
   openSideBar: boolean = false;
   waiting: boolean = true
@@ -17,13 +20,18 @@ export class NavbarComponent implements OnInit {
   scrollTop: any;
   TimeOut: any;
 
-  constructor(private layout: CdkLayoutService) { }
+  quantity: number = 0;
+
+  constructor(private layout: CdkLayoutService, public cartService: CartService) {
+    cartService.cart$?.subscribe(c => this.quantity = c.totalItemCount)
+  }
   ngOnInit(): void {
-    // shoud be resbonse on categery from serve
+    // simulate server delay /
     setTimeout(() => {
-        this.waiting=false
+      this.waiting = false
     }, 3000);
-    this.layout.isSmallMode.subscribe(isTabletMode => this.smallSize = isTabletMode)
+    this.layout.isTabletMode.subscribe(isTabletMode => this.smallSize = isTabletMode)
+
   }
   /* trace sticky scroll Navbar will scrolling  */
   onWindowScroll() {

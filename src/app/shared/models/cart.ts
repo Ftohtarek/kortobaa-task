@@ -1,7 +1,6 @@
 import { CartItem } from './cart-item';
 import { ICartItem } from './IcartItem.interface';
 import { ICartModel } from './ICartModel.interface';
-import { Product } from './product.interface';
 
 export class CartModel implements ICartModel {
 
@@ -10,7 +9,7 @@ export class CartModel implements ICartModel {
     constructor(private itemsMap: ICartItem[]) {
         itemsMap.forEach(item =>
             this.items.push(new CartItem(item.product, item.quantity))
-        )
+        )        
     }
 
     get totalCartPrice() {

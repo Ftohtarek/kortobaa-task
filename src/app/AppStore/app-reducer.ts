@@ -1,12 +1,13 @@
+import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { AppStore } from './app-initial-state';
-import { addMore, addToCart, changeRating, isFavoriteToggle, subtract } from './app.actions';
+import { addMore, addToCart, changeRating, clearItems, isFavoriteToggle, subtract } from './app.actions';
 
 export const appReducer = createReducer(
     AppStore,
     on(isFavoriteToggle, (state, action) => {
         const index = state.products.findIndex(p => p.id === action.productId);
-        const products = [...state.products];
+        const products: any = [...state.products];
         products[index] = { ...products[index], isFavorite: !products[index].isFavorite };
         return { ...state, products };
     }),
@@ -51,6 +52,7 @@ export const appReducer = createReducer(
 
         }
     }),
+
     on(addMore, (state, action) => {
         const index = state.cart.items.findIndex(i => i.product.id == action.productId)
         const cart = { ...state.cart }
@@ -64,6 +66,12 @@ export const appReducer = createReducer(
                 items: items
             }
         }
+    }),
+
+    on(clearItems, (state) => {
+        const cart = { ...state.cart }
+        const items:any = []
+        return { ...state, cart: { ...cart, items: items} }
     })
 )
 

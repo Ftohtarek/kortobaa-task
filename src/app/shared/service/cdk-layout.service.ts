@@ -12,12 +12,18 @@ export class CdkLayoutService {
    * @observable return with boolean value that indicate tablet mode
    */
 
-  public isSmallMode: Observable<any>
+  public isTabletMode: Observable<any>
 
+  public isMobileMode: Observable<any>
   constructor(private obsrever: BreakpointObserver) {
-    this.isSmallMode = this.obsrever
-      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, this.appSmallMode])
+
+    this.isTabletMode = this.obsrever
+      .observe([this.appSmallMode])
       .pipe(map(state => state.breakpoints[this.appSmallMode] ? true : false))
+
+    this.isMobileMode = this.obsrever
+      .observe([Breakpoints.XSmall])
+      .pipe(map(state => state.breakpoints[Breakpoints.XSmall] ? true : false))
   }
 
 

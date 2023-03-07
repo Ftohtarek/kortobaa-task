@@ -6,4 +6,5 @@ export const changeRating = createAction('[productAction Component] changeRating
 export const addToCart = createAction('[productAction Component] addToCart', props<{ cartItem: ICartItem }>());
 export const addMore = createAction('[productAction Component] addMore', props<{ productId: number}>());
 export const subtract = createAction('[productAction Component] subtract', props<{ productId: number }>());
+export const clearItems = createAction('[productAction Component] clearItems');
 

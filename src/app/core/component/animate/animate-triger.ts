@@ -1,4 +1,4 @@
-import { animate, animateChild, group, query, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, state, style, transition, trigger } from '@angular/animations';
 
 export const slideInOutAnimation = trigger('slideInOut', [
   state('in', style({
@@ -53,7 +53,7 @@ export const swapAnimation = trigger('swap', [
   transition(':leave', [
     style({ 'opacity': '1', 'display': 'block', 'transform': 'scale3d(1,1,1)' }),
     group([
-      animate('250ms ease-in-out', style({
+      animate('400ms ease-in-out', style({
         'opacity': '0'
       })),
       animate('500ms ease-in-out', style({
@@ -70,6 +70,7 @@ export const rollAnimation = trigger('roll', [
     'opacity': '0',
     'transform': 'translate3d(10%, 0, 0) rotate3d(0, 0, 1, 120deg)'
   })),
+  
   state('*', style({
     'opacity': '1',
     'transform': 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)'
@@ -81,22 +82,23 @@ export const rollAnimation = trigger('roll', [
       animate('1ms ease-in-out', style({
         'position':'static'
       })),
-      animate('300ms ease-in-out', style({
+      animate('100ms ease-in-out', style({
         'opacity': '1',
         'transform': 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)'
       })),
-    ], { delay: '500ms' }),
+    ], { delay: '100ms' }),
   ]),
 
   transition(':leave', [
     group([
-      animate('500ms ease-in-out', style({
+      animate('100ms ease-in-out', style({
         'opacity': '0',
         'transform': 'translate3d(10%, 0, 0) rotate3d(0, 0, 1, 120deg)'
       })),
-      animate('500ms ease-in-out', style({
+      animate('100ms ease-in-out', style({
         'display': 'none'
       })),
     ]),
   ]),
+
 ]);
